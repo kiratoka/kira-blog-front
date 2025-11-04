@@ -1,0 +1,150 @@
+
+> front@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.5.6 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.117:3000
+
+ ✓ Starting...
+ ✓ Ready in 7.3s
+ ○ Compiling / ...
+ ✓ Compiled / in 9.6s
+ ⨯ GraphQLError: Syntax Error: Expected Name, found <EOF>.
+    at parseDocument (../src/index.ts:96:25)
+    at Module.gql (../src/index.ts:134:10)
+    at __TURBOPACK__module__evaluation__ (src\lib\gqlQueries.ts:50:36)
+    at __TURBOPACK__module__evaluation__ (src\lib\actions\postActions.ts:5:1)
+    at __TURBOPACK__module__evaluation__ (.next-internal\server\app\page\actions.js (server actions loader):1:1)
+    at __TURBOPACK__module__evaluation__ (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\[root-of-the-server]__2ba2c204._.js:216:401)
+    at Object.<anonymous> (D:\Data Programming D\kira-blog\apps\front\.next\server\app\page.js:12:3)
+  48 |
+  49 |
+> 50 | export const SIGN_IN_MUTATION = gql`
+     |                                    ^
+  51 | mutation signIn($input: SignInInput! ) {
+  52 |     signIn(signInInput: $input) {
+  53 |         id {
+  path: undefined,
+  locations: [Array],
+  extensions: [Object: null prototype] {},
+  page: '/'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 3.5s
+ GET / 500 in 14642ms
+ ⨯ GraphQLError: Syntax Error: Expected Name, found <EOF>.
+    at parseDocument (../src/index.ts:96:25)
+    at Module.gql (../src/index.ts:134:10)
+    at __TURBOPACK__module__evaluation__ (src\lib\gqlQueries.ts:50:36)
+    at __TURBOPACK__module__evaluation__ (src\lib\actions\postActions.ts:5:1)
+    at __TURBOPACK__module__evaluation__ (.next-internal\server\app\page\actions.js (server actions loader):1:1)
+    at __TURBOPACK__module__evaluation__ (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\[root-of-the-server]__2ba2c204._.js:216:401)
+    at Object.<anonymous> (D:\Data Programming D\kira-blog\apps\front\.next\server\app\page.js:12:3)
+  48 |
+  49 |
+> 50 | export const SIGN_IN_MUTATION = gql`
+     |                                    ^
+  51 | mutation signIn($input: SignInInput! ) {
+  52 |     signIn(signInInput: $input) {
+  53 |         id {
+  path: undefined,
+  locations: [Array],
+  extensions: [Object: null prototype] {},
+  page: '/'
+}
+ GET / 500 in 344ms
+ ✓ Compiled /favicon.ico in 451ms
+ GET /favicon.ico 200 in 953ms
+ ⨯ GraphQLError: Syntax Error: Expected Name, found <EOF>.
+    at parseDocument (../src/index.ts:96:25)
+    at Module.gql (../src/index.ts:134:10)
+    at __TURBOPACK__module__evaluation__ (src\lib\gqlQueries.ts:50:36)
+    at __TURBOPACK__module__evaluation__ (src\lib\actions\postActions.ts:5:1)
+    at __TURBOPACK__module__evaluation__ (.next-internal\server\app\page\actions.js (server actions loader):1:1)
+    at __TURBOPACK__module__evaluation__ (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\[root-of-the-server]__2ba2c204._.js:216:401)
+    at Object.<anonymous> (D:\Data Programming D\kira-blog\apps\front\.next\server\app\page.js:12:3)
+  48 |
+  49 |
+> 50 | export const SIGN_IN_MUTATION = gql`
+     |                                    ^
+  51 | mutation signIn($input: SignInInput! ) {
+  52 |     signIn(signInInput: $input) {
+  53 |         id {
+  path: undefined,
+  locations: [Array],
+  extensions: [Object: null prototype] {},
+  page: '/'
+}
+ GET / 500 in 452ms
+ GET /favicon.ico 200 in 675ms
+ ⨯ GraphQLError: Syntax Error: Expected Name, found <EOF>.
+    at parseDocument (../src/index.ts:96:25)
+    at Module.gql (../src/index.ts:134:10)
+    at __TURBOPACK__module__evaluation__ (src\lib\gqlQueries.ts:50:36)
+    at __TURBOPACK__module__evaluation__ (src\lib\actions\postActions.ts:5:1)
+    at __TURBOPACK__module__evaluation__ (.next-internal\server\app\page\actions.js (server actions loader):1:1)
+    at __TURBOPACK__module__evaluation__ (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\[root-of-the-server]__2ba2c204._.js:216:401)
+    at Object.<anonymous> (D:\Data Programming D\kira-blog\apps\front\.next\server\app\page.js:12:3)
+  48 |
+  49 |
+> 50 | export const SIGN_IN_MUTATION = gql`
+     |                                    ^
+  51 | mutation signIn($input: SignInInput! ) {
+  52 |     signIn(signInInput: $input) {
+  53 |         id {
+  path: undefined,
+  locations: [Array],
+  extensions: [Object: null prototype] {},
+  page: '/'
+}
+ GET / 500 in 1580ms
+ GET /favicon.ico 200 in 454ms
+ ⨯ GraphQLError: Syntax Error: Expected Name, found <EOF>.
+    at parseDocument (../src/index.ts:96:25)
+    at Module.gql (../src/index.ts:134:10)
+    at __TURBOPACK__module__evaluation__ (src\lib\gqlQueries.ts:50:36)
+    at __TURBOPACK__module__evaluation__ (src\lib\actions\postActions.ts:5:1)
+    at __TURBOPACK__module__evaluation__ (.next-internal\server\app\page\actions.js (server actions loader):1:1)
+    at __TURBOPACK__module__evaluation__ (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\[root-of-the-server]__2ba2c204._.js:216:401)
+    at Object.<anonymous> (D:\Data Programming D\kira-blog\apps\front\.next\server\app\page.js:12:3)
+  48 |
+  49 |
+> 50 | export const SIGN_IN_MUTATION = gql`
+     |                                    ^
+  51 | mutation signIn($input: SignInInput! ) {
+  52 |     signIn(signInInput: $input) {
+  53 |         id {
+  path: undefined,
+  locations: [Array],
+  extensions: [Object: null prototype] {},
+  page: '/'
+}
+ GET / 500 in 698ms
+ GET /favicon.ico 200 in 709ms
+ ⨯ GraphQLError: Syntax Error: Expected Name, found <EOF>.
+    at parseDocument (../src/index.ts:96:25)
+    at Module.gql (../src/index.ts:134:10)
+    at __TURBOPACK__module__evaluation__ (src\lib\gqlQueries.ts:50:36)
+    at __TURBOPACK__module__evaluation__ (src\lib\actions\postActions.ts:5:1)
+    at __TURBOPACK__module__evaluation__ (.next-internal\server\app\page\actions.js (server actions loader):1:1)
+    at __TURBOPACK__module__evaluation__ (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\[root-of-the-server]__2ba2c204._.js:216:401)
+    at Object.<anonymous> (D:\Data Programming D\kira-blog\apps\front\.next\server\app\page.js:12:3)
+  48 |
+  49 |
+> 50 | export const SIGN_IN_MUTATION = gql`
+     |                                    ^
+  51 | mutation signIn($input: SignInInput! ) {
+  52 |     signIn(signInInput: $input) {
+  53 |         id {
+  path: undefined,
+  locations: [Array],
+  extensions: [Object: null prototype] {},
+  page: '/'
+}
+ GET / 500 in 723ms
+ GET /favicon.ico 200 in 688ms
+ ✓ Compiled in 361ms
+ ✓ Compiled / in 441ms
+ GET / 200 in 4323ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 624ms
