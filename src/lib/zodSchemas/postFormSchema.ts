@@ -26,14 +26,16 @@ import { z } from "zod";
 // Versi revisi: tanpa postId, dan properti boolean untuk isPublished agar cocok dengan InputCreatePost.tsx
 
 export const PostFormSchema = z.object({
-    title: z.string().min(5).max(100),
-    content: z.string().min(20),
+    title: z.string()
+        .min(5, { message: "Judul minimal 5 karakter" })
+        .max(100, { message: "Judul maksimal 100 karakter" }),
+    content: z.string()
+        .min(20, { message: "Konten minimal 20 karakter" }),
     tags: z.array(
         z.object({
-            id: z.string(),
-            name: z.string().min(1),
+            name: z.string().min(1, { message: "Nama tag tidak boleh kosong" }),
         })
-    ),
-    thumbnail: z.instanceof(File).optional(),
-    isPublished: z.boolean(),
+    ).min(1, { message: "Minimal 1 tag" }),
+    thumbnail: z.any().optional(),
+    isPublished: z.boolean({ error: "Status publish harus diisi" }),
 });

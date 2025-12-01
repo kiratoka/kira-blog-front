@@ -28,7 +28,6 @@ const CommentPagination = ({
             setCurrentPage(page);
     };
 
-    console.log(totalPages);
 
 
     return (

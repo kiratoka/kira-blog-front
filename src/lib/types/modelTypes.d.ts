@@ -7,6 +7,7 @@ export type Post = {
     thumbnail: string | null;
     published: boolean;
     authorId: number;
+    path?: string
     tags?: Tag[];
     createdAt: Date;
     updatedAt: Date;

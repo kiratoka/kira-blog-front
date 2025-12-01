@@ -8,145 +8,1287 @@
    - Environments: .env
 
  ✓ Starting...
- ✓ Compiled middleware in 442ms
- ✓ Ready in 6.8s
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 741ms
+ ✓ Ready in 7.3s
  ○ Compiling / ...
- ✓ Compiled / in 9.9s
- GET /?page=4 200 in 13411ms
- ○ Compiling /favicon.ico ...
- ✓ Compiled /favicon.ico in 810ms
- GET /favicon.ico?favicon.0b3bf435.ico 200 in 1463ms
- GET /?page=1 200 in 901ms
- ○ Compiling /blog/[slug]/[id] ...
- ✓ Compiled /blog/[slug]/[id] in 1943ms
- GET /blog/vilitas-aetas-aufero-articulus-admitto-cum/1 200 in 5845ms
-GraphQL errors: [
-  {
-    message: 'User Not Found',
-    locations: [ [Object] ],
-    path: [ 'userLikedPost' ],
-    extensions: {
-      code: 'UNAUTHENTICATED',
-      stacktrace: [Array],
-      originalError: [Object]
-    }
-  }
-]
- ⨯ Error: Failed to fetch data from GraphQL
-    at authFetchGraphql (src\lib\fetchGraphQL.ts:45:11)
-    at async getPostLikeData (src\lib\actions\like.ts:8:18)
-  43 |   if (result.errors) {
-  44 |     console.error("GraphQL errors:", result.errors)
-> 45 |     throw new Error("Failed to fetch data from GraphQL")
-     |           ^
-  46 |   }
-  47 |
-  48 | {
-  digest: '1038779721'
+ ✓ Compiled / in 5.7s
+ ⨯ TypeError: fetch failed
+    at async fetchGraphQL (src\lib\fetchGraphQL.ts:6:20)
+    at async fetchPosts (src\lib\actions\postActions.ts:18:18)
+    at async Home (src\app\page.tsx:15:33)
+  4 | export const fetchGraphQL = async (query: string, variables = {}) => {
+  5 |
+> 6 |   const response = await fetch(`${BACKEND_URL}/graphql`, {
+    |                    ^
+  7 |     method: "POST",
+  8 |     headers: {
+  9 |       "Content-Type": "application/json", {
+  digest: '1260792435',
+  [cause]: [AggregateError: ] { code: 'ECONNREFUSED' }
 }
- POST /blog/vilitas-aetas-aufero-articulus-admitto-cum/1 500 in 1902ms
- POST /blog/vilitas-aetas-aufero-articulus-admitto-cum/1 200 in 1005ms
-GraphQL errors: [
-  {
-    message: 'User Not Found',
-    locations: [ [Object] ],
-    path: [ 'userLikedPost' ],
-    extensions: {
-      code: 'UNAUTHENTICATED',
-      stacktrace: [Array],
-      originalError: [Object]
-    }
-  }
-]
- ⨯ Error: Failed to fetch data from GraphQL
-    at authFetchGraphql (src\lib\fetchGraphQL.ts:45:11)
-    at async getPostLikeData (src\lib\actions\like.ts:8:18)
-  43 |   if (result.errors) {
-  44 |     console.error("GraphQL errors:", result.errors)
-> 45 |     throw new Error("Failed to fetch data from GraphQL")
-     |           ^
-  46 |   }
-  47 |
-  48 | {
-  digest: '1038779721'
+ GET / 500 in 6498ms
+ ⨯ TypeError: fetch failed
+    at async fetchGraphQL (src\lib\fetchGraphQL.ts:6:20)
+    at async fetchPosts (src\lib\actions\postActions.ts:18:18)
+    at async Home (src\app\page.tsx:15:33)
+  4 | export const fetchGraphQL = async (query: string, variables = {}) => {
+  5 |
+> 6 |   const response = await fetch(`${BACKEND_URL}/graphql`, {
+    |                    ^
+  7 |     method: "POST",
+  8 |     headers: {
+  9 |       "Content-Type": "application/json", {
+  digest: '1260792435',
+  [cause]: [AggregateError: ] { code: 'ECONNREFUSED' }
 }
- POST /blog/vilitas-aetas-aufero-articulus-admitto-cum/1 500 in 1351ms
- ○ Compiling /api/auth/signout ...
- ✓ Compiled /api/auth/signout in 631ms
- GET /api/auth/signout 307 in 1221ms
- GET / 200 in 1487ms
- ○ Compiling /auth/signin ...
- ✓ Compiled /auth/signin in 1436ms
- GET /auth/signin 200 in 1812ms
- ✓ Compiled /api/auth/google/callback in 381ms
- GET /api/auth/google/callback?userId=11&name=Kiratoka&avatar=https://lh3.googleusercontent.com/a/ACg8ocIuQT09sCGc-A7YY2dMkdq_UEa7zdUzByWyMessDbmfb2FjWAM=s96-c&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJpYXQiOjE3NjQxNDE4OTAsImV4cCI6MTc2NDIyODI5MH0.w_7cFAoJhgyuChiJ8P_9nROWf52yDNfF-nozWGIZ1q8 307 in 1126ms
- GET / 200 in 1618ms
+ GET / 500 in 407ms
+ ✓ Compiled /favicon.ico in 219ms
+ GET /favicon.ico 200 in 614ms
+ GET / 200 in 2341ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 508ms
  ○ Compiling /user/create-post ...
- ✓ Compiled /user/create-post in 1855ms
- GET /user/create-post 200 in 2172ms
- ○ Compiling /user/posts ...
- ✓ Compiled /user/posts in 1183ms
- GET /user/posts 200 in 2496ms
- ○ Compiling /_not-found/page ...
- ✓ Compiled /_not-found/page in 983ms
- GET /user/posts/29/update 404 in 1435ms
- GET /user/posts/29/update 404 in 755ms
- ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
-   ▲ Next.js 15.5.6 (Turbopack)
-   - Local:        http://localhost:3000
-   - Network:      http://192.168.0.117:3000
-   - Environments: .env
-
- ✓ Starting...
- ✓ Compiled middleware in 456ms
- ✓ Ready in 5.3s
- ○ Compiling /user/posts ...
- ✓ Compiled /user/posts in 10.4s
- ⨯ TypeError: fetch failed
-    at async authFetchGraphql (src\lib\fetchGraphQL.ts:31:20)
-    at async fetchUserPosts (src\lib\actions\postActions.ts:36:18)
-    at async Page (src\app\user\posts\page.tsx:14:33)
-  29 |   const session = await getSession()
-  30 |
-> 31 |   const response = await fetch(`${BACKEND_URL}/graphql`, {
-     |                    ^
-  32 |     method: "POST",
-  33 |     headers: {
-  34 |       "Content-Type": "application/json", {
-  digest: '2697797782',
-  [cause]: [AggregateError: ] { code: 'ECONNREFUSED' }
+ ✓ Compiled /user/create-post in 2.5s
+ GET /user/create-post 200 in 3005ms
+ ✓ Compiled in 734ms
+ ✓ Compiled in 741ms
+ ✓ Compiled in 742ms
+ ✓ Compiled /user/create-post in 446ms
+ GET /user/create-post 200 in 909ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 847ms
+ ⨯ ReferenceError: formData is not defined
+    at ThumbnailUploader (src\app\user\create-post\_components\ThumbnailUploader.tsx:11:18)
+   9 |             {/* Start: Upload Section */}
+  10 |             <div className="relative">
+> 11 |                 {formData.thumbnail ? (
+     |                  ^
+  12 |                     // Start: Preview Thumbnail
+  13 |                     <div className="flex flex-col items-center justify-center w-full bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-4">
+  14 |                         <img {
+  digest: '1267560877'
 }
- GET /user/posts 500 in 13299ms
- ○ Compiling /favicon.ico ...
- ✓ Compiled /favicon.ico in 661ms
- GET /favicon.ico?favicon.0b3bf435.ico 200 in 1363ms
- GET /favicon.ico 200 in 1339ms
- ⨯ TypeError: fetch failed
-    at async authFetchGraphql (src\lib\fetchGraphQL.ts:31:20)
-    at async fetchUserPosts (src\lib\actions\postActions.ts:36:18)
-    at async Page (src\app\user\posts\page.tsx:14:33)
-  29 |   const session = await getSession()
-  30 |
-> 31 |   const response = await fetch(`${BACKEND_URL}/graphql`, {
-     |                    ^
-  32 |     method: "POST",
-  33 |     headers: {
-  34 |       "Content-Type": "application/json", {
-  digest: '2697797782',
-  [cause]: [AggregateError: ] { code: 'ECONNREFUSED' }
+ ✓ Compiled in 720ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /user/create-post 500 in 2184ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 482ms
+ GET /favicon.ico 200 in 436ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 645ms
+ ⨯ ReferenceError: formData is not defined
+    at ThumbnailUploader (src\app\user\create-post\_components\ThumbnailUploader.tsx:14:18)
+  12 |             {/* Start: Upload Section */}
+  13 |             <div className="relative">
+> 14 |                 {formData.thumbnail ? (
+     |                  ^
+  15 |                     // Start: Preview Thumbnail
+  16 |                     <div className="flex flex-col items-center justify-center w-full bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-4">
+  17 |                         <img {
+  digest: '1267560877'
 }
- GET /user/posts 500 in 1243ms
+ GET /user/create-post 500 in 1452ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 671ms
+ GET /favicon.ico 200 in 937ms
+ ✓ Compiled in 872ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 437ms
+ ✓ Compiled /user/create-post in 81ms
+ ⨯ ReferenceError: formData is not defined
+    at ThumbnailUploader (src\app\user\create-post\_components\ThumbnailUploader.tsx:14:18)
+  12 |             {/* Start: Upload Section */}
+  13 |             <div className="relative">
+> 14 |                 {formData.thumbnail ? (
+     |                  ^
+  15 |                     // Start: Preview Thumbnail
+  16 |                     <div className="flex flex-col items-center justify-center w-full bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-4">
+  17 |                         <img {
+  digest: '1267560877'
+}
+ GET /user/create-post 500 in 549ms
+ GET /favicon.ico 200 in 374ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 600ms
+ ⨯ ReferenceError: formData is not defined
+    at ThumbnailUploader (src\app\user\create-post\_components\ThumbnailUploader.tsx:18:18)
+  16 |             {/* Start: Upload Section */}
+  17 |             <div className="relative">
+> 18 |                 {formData.thumbnail ? (
+     |                  ^
+  19 |                     // Start: Preview Thumbnail
+  20 |                     <div className="flex flex-col items-center justify-center w-full bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-4">
+  21 |                         <img {
+  digest: '1267560877'
+}
+ GET /user/create-post 500 in 1461ms
  GET /favicon.ico?favicon.0b3bf435.ico 200 in 630ms
- GET /favicon.ico 200 in 629ms
+ GET /favicon.ico 200 in 617ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 591ms
+ ⨯ ReferenceError: formData is not defined
+    at ThumbnailUploader (src\app\user\create-post\_components\ThumbnailUploader.tsx:18:18)
+  16 |             {/* Start: Upload Section */}
+  17 |             <div className="relative">
+> 18 |                 {formData.thumbnail ? (
+     |                  ^
+  19 |                     // Start: Preview Thumbnail
+  20 |                     <div className="flex flex-col items-center justify-center w-full bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-4">
+  21 |                         <img {
+  digest: '1267560877'
+}
+ GET /user/create-post 500 in 1512ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 569ms
+ GET /favicon.ico 200 in 523ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 447ms
+ ⨯ ReferenceError: formData is not defined
+    at ThumbnailUploader (src\app\user\create-post\_components\ThumbnailUploader.tsx:18:18)
+  16 |             {/* Start: Upload Section */}
+  17 |             <div className="relative">
+> 18 |                 {formData.thumbnail ? (
+     |                  ^
+  19 |                     // Start: Preview Thumbnail
+  20 |                     <div className="flex flex-col items-center justify-center w-full bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-4">
+  21 |                         <img {
+  digest: '1267560877'
+}
+ GET /user/create-post 500 in 1046ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 553ms
+ GET /favicon.ico 200 in 557ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 554ms
+ ⨯ ReferenceError: formData is not defined
+    at ThumbnailUploader (src\app\user\create-post\_components\ThumbnailUploader.tsx:18:18)
+  16 |             {/* Start: Upload Section */}
+  17 |             <div className="relative">
+> 18 |                 {formData.thumbnail ? (
+     |                  ^
+  19 |                     // Start: Preview Thumbnail
+  20 |                     <div className="flex flex-col items-center justify-center w-full bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-4">
+  21 |                         <img {
+  digest: '2615068162'
+}
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /user/create-post 500 in 1348ms
+ ✓ Compiled in 0ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 516ms
+ GET /favicon.ico 200 in 447ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 727ms
+ ✓ Compiled in 565ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /user/create-post 200 in 1584ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 409ms
+ ✓ Compiled in 637ms
+ ✓ Compiled in 642ms
+ ✓ Compiled in 643ms
+ ✓ Compiled in 694ms
+ ✓ Compiled in 661ms
+ ✓ Compiled in 754ms
+ ✓ Compiled /user/create-post in 498ms
+ GET /user/create-post 200 in 1000ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 472ms
+ ⨯ ReferenceError: TagIcon is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\TagInput.tsx:3:4)
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\InputCreatePost.tsx:14:1)
+  1 | <div>
+  2 | <label htmlFor="tags" className="block text-sm font-semibold text-gray-700 mb-2">
+> 3 |   <TagIcon className="w-4 h-4 inline mr-1" />
+    |    ^
+  4 |   Tags
+  5 | </label>
+  6 | {/* Start: Tags Field Section */} {
+  digest: '1777972617'
+}
+ GET /user/create-post 500 in 1764ms
+ GET /favicon.ico 200 in 429ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload when ./apps/front/src/app/user/create-post/_components/InputCreatePost.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 718ms
+ ⨯ ReferenceError: TagIcon is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\TagInput.tsx:3:4)
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\InputCreatePost.tsx:14:1)
+  1 | <div>
+  2 | <label htmlFor="tags" className="block text-sm font-semibold text-gray-700 mb-2">
+> 3 |   <TagIcon className="w-4 h-4 inline mr-1" />
+    |    ^
+  4 |   Tags
+  5 | </label>
+  6 | {/* Start: Tags Field Section */} {
+  digest: '1777972617'
+}
+ GET /user/create-post 500 in 1901ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 476ms
+ GET /favicon.ico 200 in 479ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload when ./apps/front/src/app/user/create-post/_components/InputCreatePost.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 511ms
+ ⨯ ReferenceError: TagIcon is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\TagInput.tsx:3:4)
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\InputCreatePost.tsx:14:1)
+  1 | <div>
+  2 | <label htmlFor="tags" className="block text-sm font-semibold text-gray-700 mb-2">
+> 3 |   <TagIcon className="w-4 h-4 inline mr-1" />
+    |    ^
+  4 |   Tags
+  5 | </label>
+  6 | {/* Start: Tags Field Section */} {
+  digest: '1777972617'
+}
+ GET /user/create-post 500 in 2180ms
+ GET /favicon.ico 200 in 408ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload when ./apps/front/src/app/user/create-post/_components/InputCreatePost.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 529ms
+ ⨯ ReferenceError: TagIcon is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\TagInput.tsx:3:4)
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\InputCreatePost.tsx:14:1)
+  1 | <div>
+  2 | <label htmlFor="tags" className="block text-sm font-semibold text-gray-700 mb-2">
+> 3 |   <TagIcon className="w-4 h-4 inline mr-1" />
+    |    ^
+  4 |   Tags
+  5 | </label>
+  6 | {/* Start: Tags Field Section */} {
+  digest: '1777972617'
+}
+ GET /user/create-post 500 in 2113ms
+ GET /favicon.ico 200 in 426ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload when ./apps/front/src/app/user/create-post/_components/InputCreatePost.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 762ms
+ ⨯ ReferenceError: TagIcon is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\TagInput.tsx:3:4)
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\InputCreatePost.tsx:14:1)
+  1 | <div>
+  2 | <label htmlFor="tags" className="block text-sm font-semibold text-gray-700 mb-2">
+> 3 |   <TagIcon className="w-4 h-4 inline mr-1" />
+    |    ^
+  4 |   Tags
+  5 | </label>
+  6 | {/* Start: Tags Field Section */} {
+  digest: '1777972617'
+}
+ GET /user/create-post 500 in 2177ms
+ GET /favicon.ico 200 in 392ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload when ./apps/front/src/app/user/create-post/_components/TagInput.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 810ms
+ ⨯ ReferenceError: tagInput is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\TagInput.tsx:15:14)
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\InputCreatePost.tsx:14:1)
+  13 |       type="text"
+  14 |       id="tags"
+> 15 |       value={tagInput}
+     |              ^
+  16 |       onChange={handleTagInput}
+  17 |       onKeyDown={(e) => {
+  18 |         if (e.key === "Enter") { {
+  digest: '2767306996'
+}
+ GET /user/create-post 500 in 1971ms
+ GET /favicon.ico 200 in 441ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload when ./apps/front/src/app/user/create-post/_components/TagInput.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 677ms
+ ⨯ ReferenceError: tagInput is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\TagInput.tsx:16:14)
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\InputCreatePost.tsx:14:1)
+  14 |       type="text"
+  15 |       id="tags"
+> 16 |       value={tagInput}
+     |              ^
+  17 |       onChange={handleTagInput}
+  18 |       onKeyDown={(e) => {
+  19 |         if (e.key === "Enter") { {
+  digest: '2767306996'
+}
+ GET /user/create-post 500 in 2323ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 533ms
+ GET /favicon.ico 200 in 495ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload when ./apps/front/src/app/user/create-post/_components/TagInput.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 715ms
+ ⨯ ReferenceError: tagInput is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\TagInput.tsx:16:24)
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\InputCreatePost.tsx:14:1)
+  14 |                 type="text"
+  15 |                 id="tags"
+> 16 |                 value={tagInput}
+     |                        ^
+  17 |                 onChange={handleTagInput}
+  18 |                 onKeyDown={(e) => {
+  19 |                     if (e.key === "Enter") { {
+  digest: '2767306996'
+}
+ GET /user/create-post 500 in 2164ms
+ GET /favicon.ico 200 in 433ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload when ./apps/front/src/app/user/create-post/_components/TagInput.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 618ms
+ GET /user/create-post 200 in 1082ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 442ms
+ ✓ Compiled in 729ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 840ms
+ ⨯ ReferenceError: tagInput is not defined
+    at TagInput (src\app\user\create-post\_components\TagInput.tsx:18:28)
+  16 |                     type="text"
+  17 |                     id="tags"
+> 18 |                     value={tagInput}
+     |                            ^
+  19 |                     onChange={handleTagInput}
+  20 |                     onKeyDown={(e) => {
+  21 |                       if (e.key === "Enter") { {
+  digest: '4198802340'
+}
+ GET /user/create-post 500 in 1401ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 509ms
+ GET /favicon.ico 200 in 522ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 855ms
+ ⨯ ReferenceError: tagInput is not defined
+    at TagInput (src\app\user\create-post\_components\TagInput.tsx:19:28)
+  17 |                     type="text"
+  18 |                     id="tags"
+> 19 |                     value={tagInput}
+     |                            ^
+  20 |                     onChange={handleTagInput}
+  21 |                     onKeyDown={(e) => {
+  22 |                       if (e.key === "Enter") { {
+  digest: '2501912331'
+}
+ GET /user/create-post 500 in 1535ms
+ GET /favicon.ico 200 in 451ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 776ms
+ ⨯ ReferenceError: tagInput is not defined
+    at TagInput (src\app\user\create-post\_components\TagInput.tsx:22:28)
+  20 |                     type="text"
+  21 |                     id="tags"
+> 22 |                     value={tagInput}
+     |                            ^
+  23 |                     onChange={handleTagInput}
+  24 |                     onKeyDown={(e) => {
+  25 |                       if (e.key === "Enter") { {
+  digest: '2501912331'
+}
+ GET /user/create-post 500 in 1224ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 586ms
+ GET /favicon.ico 200 in 610ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 607ms
+ ⨯ ReferenceError: tagInput is not defined
+    at TagInput (src\app\user\create-post\_components\TagInput.tsx:25:28)
+  23 |                     type="text"
+  24 |                     id="tags"
+> 25 |                     value={tagInput}
+     |                            ^
+  26 |                     onChange={handleTagInput}
+  27 |                     onKeyDown={(e) => {
+  28 |                       if (e.key === "Enter") { {
+  digest: '2501912331'
+}
+ GET /user/create-post 500 in 1342ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 451ms
+ GET /favicon.ico 200 in 464ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 652ms
+ ⨯ ReferenceError: tagInput is not defined
+    at TagInput (src\app\user\create-post\_components\TagInput.tsx:27:28)
+  25 |                     type="text"
+  26 |                     id="tags"
+> 27 |                     value={tagInput}
+     |                            ^
+  28 |                     onChange={handleTagInput}
+  29 |                     onKeyDown={(e) => {
+  30 |                       if (e.key === "Enter") { {
+  digest: '2501912331'
+}
+ GET /user/create-post 500 in 1896ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 566ms
+ GET /favicon.ico 200 in 551ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 713ms
+ ⨯ ReferenceError: tagInput is not defined
+    at TagInput (src\app\user\create-post\_components\TagInput.tsx:30:28)
+  28 |                     type="text"
+  29 |                     id="tags"
+> 30 |                     value={tagInput}
+     |                            ^
+  31 |                     onChange={handleTagInput}
+  32 |                     onKeyDown={(e) => {
+  33 |                       if (e.key === "Enter") { {
+  digest: '2501912331'
+}
+ GET /user/create-post 500 in 1549ms
+ GET /favicon.ico 200 in 456ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 655ms
+ ⨯ ReferenceError: formData is not defined
+    at TagInput (src\app\user\create-post\_components\TagInput.tsx:54:22)
+  52 |                 {/* Start: Tag List */}
+  53 |                 <div className="flex flex-wrap gap-2">
+> 54 |                     {formData.tags && formData.tags.map((tag) =>
+     |                      ^
+  55 |                         <span key={tag.id} className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-50 text-cyan-700 rounded-full border-2 border-cyan-200 font-medium">
+  56 |                             <TagIcon className="w-4 h-4" />
+  57 |                             {tag.name} {
+  digest: '2062246923'
+}
+ GET /user/create-post 500 in 1759ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 1123ms
+ GET /favicon.ico 200 in 1031ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 594ms
+ ⨯ ReferenceError: formData is not defined
+    at TagInput (src\app\user\create-post\_components\TagInput.tsx:54:22)
+  52 |                 {/* Start: Tag List */}
+  53 |                 <div className="flex flex-wrap gap-2">
+> 54 |                     {formData.tags && formData.tags.map((tag) =>
+     |                      ^
+  55 |                         <span key={tag.id} className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-50 text-cyan-700 rounded-full border-2 border-cyan-200 font-medium">
+  56 |                             <TagIcon className="w-4 h-4" />
+  57 |                             {tag.name} {
+  digest: '2062246923'
+}
+ ✓ Compiled in 886ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /user/create-post 500 in 2100ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 490ms
+ GET /favicon.ico 200 in 497ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 640ms
+ ⨯ ReferenceError: formData is not defined
+    at TagInput (src\app\user\create-post\_components\TagInput.tsx:54:30)
+  52 |                 {/* Start: Tag List */}
+  53 |                 <div className="flex flex-wrap gap-2">
+> 54 |                     {tags && formData.tags.map((tag) =>
+     |                              ^
+  55 |                         <span key={tag.id} className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-50 text-cyan-700 rounded-full border-2 border-cyan-200 font-medium">
+  56 |                             <TagIcon className="w-4 h-4" />
+  57 |                             {tag.name} {
+  digest: '2062246923'
+}
+ GET /user/create-post 500 in 1749ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 597ms
+ GET /favicon.ico 200 in 580ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 490ms
+ GET /user/create-post 200 in 1562ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 431ms
+ ✓ Compiled in 500ms
+ ✓ Compiled in 677ms
+ ✓ Compiled in 598ms
+ ✓ Compiled in 395ms
+ ✓ Compiled in 581ms
+ ✓ Compiled in 593ms
+ ✓ Compiled in 368ms
+ ○ Compiling /user/create-post ...
+ ✓ Compiled /user/create-post in 593ms
+ GET /user/create-post 200 in 1495ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 368ms
+ GET /user/create-post 200 in 986ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 427ms
+ ✓ Compiled in 364ms
+ ✓ Compiled in 679ms
+ ○ Compiling /user/create-post ...
+ ✓ Compiled /user/create-post in 522ms
+ GET /user/create-post 200 in 1222ms
+ ✓ Compiled in 779ms
+ ✓ Compiled in 623ms
+ ⨯ ReferenceError: Inter is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\ContentInput.tsx:1:1)
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\InputCreatePost.tsx:15:1)
+> 1 | Inter
+    | ^
+  2 |
+  3 | const ContentInput = () => {
+  4 |   return ( {
+  digest: '4015439220'
+}
+ GET /user/create-post 500 in 2000ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 498ms
+ GET /favicon.ico 200 in 510ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload when ./apps/front/src/app/user/create-post/_components/ContentInput.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 576ms
+ ⨯ ReferenceError: Inter is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\ContentInput.tsx:1:1)
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\InputCreatePost.tsx:15:1)
+> 1 | Inter
+    | ^
+  2 |
+  3 | const ContentInput = () => {
+  4 |     return ( {
+  digest: '4015439220'
+}
+ GET /user/create-post 500 in 2455ms
+ GET /favicon.ico 200 in 476ms
+ ✓ Compiled in 567ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload when ./apps/front/src/app/user/create-post/_components/ContentInput.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 325ms
+ ✓ Compiled /user/create-post in 87ms
+ ⨯ ReferenceError: Inter is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\ContentInput.tsx:1:1)
+    at __TURBOPACK__module__evaluation__ (src\app\user\create-post\_components\InputCreatePost.tsx:15:1)
+> 1 | Inter
+    | ^
+  2 |
+  3 | const ContentInput = () => {
+  4 |     return ( {
+  digest: '4015439220'
+}
+ GET /user/create-post 500 in 890ms
+ GET /favicon.ico 200 in 337ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload when ./apps/front/src/app/user/create-post/_components/ContentInput.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 687ms
+ ⨯ ReferenceError: formData is not defined
+    at ContentInput (src\app\user\create-post\_components\ContentInput.tsx:15:24)
+  13 |                 id="content"
+  14 |                 name="content"
+> 15 |                 value={formData.content}
+     |                        ^
+  16 |                 onChange={handleInputChange}
+  17 |                 rows={10}
+  18 |                 placeholder="Write your content here..." {
+  digest: '606779113'
+}
+ GET /user/create-post 500 in 3278ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 458ms
+ GET /favicon.ico 200 in 449ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 307ms
+ ⨯ ReferenceError: formData is not defined
+    at ContentInput (src\app\user\create-post\_components\ContentInput.tsx:15:24)
+  13 |                 id="content"
+  14 |                 name="content"
+> 15 |                 value={formData.content}
+     |                        ^
+  16 |                 onChange={handleInputChange}
+  17 |                 rows={10}
+  18 |                 placeholder="Write your content here..." {
+  digest: '606779113'
+}
+ GET /user/create-post 500 in 1017ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 400ms
+ GET /favicon.ico 200 in 379ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 261ms
+ ⨯ ReferenceError: formData is not defined
+    at ContentInput (src\app\user\create-post\_components\ContentInput.tsx:15:24)
+  13 |                 id="content"
+  14 |                 name="content"
+> 15 |                 value={formData.content}
+     |                        ^
+  16 |                 onChange={handleInputChange}
+  17 |                 rows={10}
+  18 |                 placeholder="Write your content here..." {
+  digest: '1737718407'
+}
+ GET /user/create-post 500 in 658ms
+ GET /favicon.ico 200 in 353ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 582ms
+ ⨯ ReferenceError: formData is not defined
+    at ContentInput (src\app\user\create-post\_components\ContentInput.tsx:22:18)
+  20 |             />
+  21 |             <p className="text-sm text-gray-500 mt-2">
+> 22 |                 {formData.content.length} characters
+     |                  ^
+  23 |             </p>
+  24 |         </div>
+  25 |     ) {
+  digest: '1737718407'
+}
+ GET /user/create-post 500 in 1641ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 547ms
+ GET /favicon.ico 200 in 517ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 414ms
+ GET /user/create-post 200 in 1136ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 449ms
+ ✓ Compiled in 646ms
+ ✓ Compiled in 1126ms
+ ✓ Compiled in 963ms
+ ✓ Compiled /user/create-post in 421ms
+ GET /user/create-post 200 in 856ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 463ms
+ GET /user/create-post 200 in 1176ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 388ms
+ ✓ Compiled in 679ms
+ ✓ Compiled in 405ms
+ ✓ Compiled in 573ms
+ ✓ Compiled in 642ms
+ ✓ Compiled in 859ms
+ ✓ Compiled in 489ms
+ ✓ Compiled in 608ms
+ ✓ Compiled in 717ms
+ ✓ Compiled in 710ms
+ ✓ Compiled in 412ms
+ ✓ Compiled /user/create-post in 285ms
+ GET /user/create-post 200 in 624ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 732ms
+ GET /user/create-post 200 in 1637ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 562ms
+ ✓ Compiled in 558ms
+ ✓ Compiled in 688ms
+ ✓ Compiled in 630ms
+ ✓ Compiled in 540ms
+ ✓ Compiled in 533ms
+ ✓ Compiled in 474ms
+ ✓ Compiled in 407ms
+ ✓ Compiled in 540ms
+ ✓ Compiled in 712ms
+ ✓ Compiled in 840ms
+ ✓ Compiled in 544ms
+ ✓ Compiled in 392ms
+ ✓ Compiled in 723ms
+ ✓ Compiled in 575ms
+ ✓ Compiled in 697ms
+ ✓ Compiled in 547ms
+ ✓ Compiled in 422ms
+ ✓ Compiled in 447ms
+ ✓ Compiled in 370ms
+ ✓ Compiled in 525ms
+ ✓ Compiled in 590ms
+ ✓ Compiled in 484ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 469ms
+ GET /user/create-post 200 in 1305ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 468ms
+ ✓ Compiled in 425ms
+ ✓ Compiled in 876ms
+ ✓ Compiled in 535ms
+ ✓ Compiled in 693ms
+ GET /user/create-post 200 in 987ms
+ ✓ Compiled in 779ms
+ GET /user/create-post 200 in 431ms
+ ✓ Compiled in 665ms
+ GET /user/create-post 200 in 726ms
+ ✓ Compiled in 551ms
+ ✓ Compiled in 568ms
+ GET /user/create-post 200 in 807ms
+ ✓ Compiled in 907ms
+ GET /user/create-post 200 in 769ms
+ ✓ Compiled in 894ms
+ GET /user/create-post 200 in 504ms
+ ✓ Compiled in 636ms
+ ✓ Compiled in 680ms
+ ✓ Compiled in 1491ms
+ ✓ Compiled in 726ms
+ ⨯ ./apps/front/src/lib/actions/postActions.ts:53:14
+Ecmascript file had an error
+[0m [90m 51 |[39m
+ [90m 52 |[39m
+[31m[1m>[22m[39m[90m 53 |[39m [36mexport[39m [36mconst[39m createPostMutation [33m=[39m (session[33m:[39m [33mSession[39m) [33m=>[39m useMutation({
+ [90m    |[39m              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 54 |[39m     mutationFn[33m:[39m [36masync[39m (fd[33m:[39m [33mFormData[39m) [33m=>[39m {
+ [90m 55 |[39m       [36mconst[39m token [33m=[39m session[33m?[39m[33m.[39maccessToken
+ [90m 56 |[39m       [36mconst[39m fullUrl [33m=[39m [32m`${BACKEND_URL}/post`[39m[33m;[39m[0m
+
+Server Actions must be async functions.
+
+
+
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 4.5s
+ GET /user/create-post 500 in 6028ms
+ GET /favicon.ico 500 in 260ms
+ ✓ Compiled in 758ms
+ ✓ Compiled /user/create-post in 288ms
+ GET /user/create-post 200 in 1469ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 417ms
+ ✓ Compiled in 540ms
+ ✓ Compiled in 438ms
+ ✓ Compiled in 937ms
+ ✓ Compiled in 647ms
+ ✓ Compiled in 608ms
+ ✓ Compiled in 586ms
+ ✓ Compiled in 734ms
+ ✓ Compiled in 724ms
+ ✓ Compiled in 917ms
+ ✓ Compiled in 653ms
+ ✓ Compiled in 1143ms
+ ✓ Compiled in 789ms
+ ✓ Compiled in 324ms
+ ✓ Compiled in 293ms
+ ✓ Compiled in 634ms
+ ✓ Compiled in 471ms
+ ✓ Compiled in 475ms
+ ✓ Compiled /user/create-post in 494ms
+ ⨯ ./apps/front/src/lib/actions/postActions.ts:64:17
+Ecmascript file had an error
+[0m [90m 62 |[39m
+ [90m 63 |[39m [90m// Versi yang benar:[39m
+[31m[1m>[22m[39m[90m 64 |[39m [36mexport[39m [36mfunction[39m useCreatePostMutation(session[33m:[39m [33mSession[39m) {
+ [90m    |[39m                 [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 65 |[39m   [36mreturn[39m useMutation({
+ [90m 66 |[39m     mutationFn[33m:[39m [36masync[39m (fd[33m:[39m [33mFormData[39m) [33m=>[39m {
+ [90m 67 |[39m       [36mconst[39m token [33m=[39m session[33m?[39m[33m.[39maccessToken[0m
+
+Server Actions must be async functions.
+
+
+
+ GET /user/create-post 500 in 794ms
+ GET /favicon.ico 500 in 472ms
+ ⨯ ./apps/front/src/lib/actions/postActions.ts:64:17
+Ecmascript file had an error
+[0m [90m 62 |[39m
+ [90m 63 |[39m [90m// Versi yang benar:[39m
+[31m[1m>[22m[39m[90m 64 |[39m [36mexport[39m [36mfunction[39m useCreatePostMutation(session[33m:[39m [33mSession[39m) {
+ [90m    |[39m                 [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 65 |[39m   [36mreturn[39m useMutation({
+ [90m 66 |[39m     mutationFn[33m:[39m [36masync[39m (fd[33m:[39m [33mFormData[39m) [33m=>[39m {
+ [90m 67 |[39m       [36mconst[39m token [33m=[39m session[33m?[39m[33m.[39maccessToken[0m
+
+Server Actions must be async functions.
+
+
+
+ GET /user/create-post 500 in 772ms
+ GET /favicon.ico 500 in 474ms
+ ✓ Compiled in 949ms
+ ✓ Compiled /user/create-post in 451ms
+ ⨯ ./apps/front/src/lib/actions/postActions.ts:64:17
+Ecmascript file had an error
+[0m [90m 62 |[39m
+ [90m 63 |[39m [90m// Versi yang benar:[39m
+[31m[1m>[22m[39m[90m 64 |[39m [36mexport[39m [36mfunction[39m useCreatePostMutation(session[33m:[39m [33mSession[39m) {
+ [90m    |[39m                 [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 65 |[39m   [36mreturn[39m useMutation({
+ [90m 66 |[39m     mutationFn[33m:[39m [36masync[39m (fd[33m:[39m [33mFormData[39m) [33m=>[39m {
+ [90m 67 |[39m       [36mconst[39m token [33m=[39m session[33m?[39m[33m.[39maccessToken[0m
+
+Server Actions must be async functions.
+
+
+
+ GET /user/create-post 500 in 1065ms
+ GET /favicon.ico 500 in 1069ms
+ ✓ Compiled in 673ms
+ ✓ Compiled /user/create-post in 275ms
+ GET /user/create-post 200 in 1240ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 431ms
+ ✓ Compiled in 599ms
+ ✓ Compiled /user/create-post in 285ms
+ GET /user/create-post 200 in 739ms
+ GET /user/create-post 200 in 421ms
+ ✓ Compiled in 949ms
+ ✓ Compiled /user/create-post in 329ms
+ GET /user/create-post 200 in 799ms
+ GET /user/create-post 200 in 363ms
+ ✓ Compiled in 890ms
+ ✓ Compiled /user/create-post in 279ms
+ GET /user/create-post 200 in 1025ms
+ GET /user/create-post 200 in 399ms
+ ✓ Compiled in 717ms
+ ✓ Compiled in 533ms
+ ✓ Compiled /user/create-post in 244ms
+ GET /user/create-post 200 in 635ms
+ ✓ Compiled in 542ms
+ ✓ Compiled in 762ms
+ ✓ Compiled in 888ms
+ GET /user/create-post 200 in 886ms
+ ✓ Compiled in 670ms
+ ✓ Compiled in 611ms
+ ✓ Compiled in 422ms
+ ✓ Compiled in 595ms
+ ✓ Compiled in 966ms
+ ✓ Compiled /user/create-post in 411ms
+ GET /user/create-post 200 in 965ms
+ GET /user/create-post 200 in 435ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 413ms
+ ⨯ ReferenceError: createPost is not defined
+    at InputCreatePost (src\app\user\create-post\_components\InputCreatePost.tsx:126:17)
+  124 |
+  125 |   const createPostMutation = useMutation({
+> 126 |     mutationFn: createPost
+      |                 ^
+  127 |   })
+  128 |
+  129 |   const handleSubmit = async (e: React.FormEvent) => { {
+  digest: '2063268780'
+}
+ GET /user/create-post 500 in 1285ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 1256ms
+ GET /favicon.ico 200 in 705ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 539ms
+ ⨯ ReferenceError: createPost is not defined
+    at InputCreatePost (src\app\user\create-post\_components\InputCreatePost.tsx:126:17)
+  124 |
+  125 |   const createPostMutation = useMutation({
+> 126 |     mutationFn: createPost()
+      |                 ^
+  127 |   })
+  128 |
+  129 |   const handleSubmit = async (e: React.FormEvent) => { {
+  digest: '2063268780'
+}
+ GET /user/create-post 500 in 2155ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 573ms
+ GET /favicon.ico 200 in 537ms
+ ✓ Compiled in 523ms
+ ⨯ ReferenceError: createPost is not defined
+    at InputCreatePost (src\app\user\create-post\_components\InputCreatePost.tsx:126:17)
+  124 |
+  125 |   const createPostMutation = useMutation({
+> 126 |     mutationFn: createPost()
+      |                 ^
+  127 |   })
+  128 |
+  129 |   const handleSubmit = async (e: React.FormEvent) => { {
+  digest: '2063268780'
+}
+ GET /user/create-post 500 in 876ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 601ms
+ GET /favicon.ico 200 in 567ms
+ ✓ Compiled in 497ms
+ ⨯ ReferenceError: createPost is not defined
+    at InputCreatePost (src\app\user\create-post\_components\InputCreatePost.tsx:126:17)
+  124 |
+  125 |   const createPostMutation = useMutation({
+> 126 |     mutationFn: createPost()
+      |                 ^
+  127 |   })
+  128 |
+  129 |   const handleSubmit = async (e: React.FormEvent) => { {
+  digest: '2063268780'
+}
+ GET /user/create-post 500 in 794ms
+ ✓ Compiled in 422ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 490ms
+ GET /favicon.ico 200 in 593ms
+ ⨯ ReferenceError: createPost is not defined
+    at InputCreatePost (src\app\user\create-post\_components\InputCreatePost.tsx:126:17)
+  124 |
+  125 |   const createPostMutation = useMutation({
+> 126 |     mutationFn: createPost()
+      |                 ^
+  127 |   })
+  128 |
+  129 |   const handleSubmit = async (e: React.FormEvent) => { {
+  digest: '2063268780'
+}
+ GET /user/create-post 500 in 648ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 462ms
+ ✓ Compiled in 481ms
+ ⨯ ReferenceError: createPost is not defined
+    at InputCreatePost (src\app\user\create-post\_components\InputCreatePost.tsx:126:17)
+  124 |
+  125 |   const createPostMutation = useMutation({
+> 126 |     mutationFn: createPost()
+      |                 ^
+  127 |   })
+  128 |
+  129 |   const handleSubmit = async (e: React.FormEvent) => { {
+  digest: '2063268780'
+}
+ GET /user/create-post 500 in 891ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 776ms
+ GET /favicon.ico 200 in 757ms
+ ✓ Compiled in 405ms
+ ⨯ ReferenceError: createPost is not defined
+    at InputCreatePost (src\app\user\create-post\_components\InputCreatePost.tsx:126:17)
+  124 |
+  125 |   const createPostMutation = useMutation({
+> 126 |     mutationFn: createPost()
+      |                 ^
+  127 |   })
+  128 |
+  129 |   const handleSubmit = async (e: React.FormEvent) => { {
+  digest: '2063268780'
+}
+ GET /user/create-post 500 in 640ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 509ms
+ GET /favicon.ico 200 in 481ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 903ms
+ ✓ Compiled /user/create-post in 420ms
+ ✓ Compiled in 754ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⨯ ReferenceError: fd is not defined
+    at InputCreatePost (src\app\user\create-post\_components\InputCreatePost.tsx:127:38)
+  125 |
+  126 |   const createPostMutation = useMutation({
+> 127 |     mutationFn: createPost({session, fd})
+      |                                      ^
+  128 |   })
+  129 |
+  130 |   const handleSubmit = async (e: React.FormEvent) => { {
+  digest: '1980711131'
+}
+ GET /user/create-post 500 in 1956ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 521ms
+ GET /favicon.ico 200 in 503ms
+ ✓ Compiled in 630ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⨯ ReferenceError: fd is not defined
+    at InputCreatePost (src\app\user\create-post\_components\InputCreatePost.tsx:127:38)
+  125 |
+  126 |   const createPostMutation = useMutation({
+> 127 |     mutationFn: createPost({session, fd})
+      |                                      ^
+  128 |   })
+  129 |
+  130 |   const handleSubmit = async (e: React.FormEvent) => { {
+  digest: '119561235'
+}
+ GET /user/create-post 500 in 1794ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 596ms
+ GET /favicon.ico 200 in 552ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 762ms
+ ⨯ ReferenceError: fd is not defined
+    at InputCreatePost (src\app\user\create-post\_components\InputCreatePost.tsx:127:38)
+  125 |
+  126 |   const createPostMutation = useMutation({
+> 127 |     mutationFn: createPost({session, fd})
+      |                                      ^
+  128 |   })
+  129 |
+  130 |   const handleSubmit = async (e: React.FormEvent) => { {
+  digest: '119561235'
+}
+ GET /user/create-post 500 in 978ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 671ms
+ GET /favicon.ico 200 in 665ms
+ ✓ Compiled in 609ms
+ ✓ Compiled in 696ms
+ ✓ Compiled in 756ms
+ ✓ Compiled in 426ms
+ ✓ Compiled in 454ms
+ ✓ Compiled in 803ms
+ ✓ Compiled in 469ms
+ ✓ Compiled in 719ms
+ ✓ Compiled in 667ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 669ms
+ ✓ Compiled /user/create-post in 154ms
+ ⨯ ReferenceError: fd is not defined
+    at InputCreatePost (src\app\user\create-post\_components\InputCreatePost.tsx:127:38)
+  125 |
+  126 |   const createPostMutation = useMutation({
+> 127 |     mutationFn: createPost({session, fd})
+      |                                      ^
+  128 |   })
+  129 |
+  130 |   const handleSubmit = async (e: React.FormEvent) => { {
+  digest: '119561235'
+}
+ GET /user/create-post 500 in 954ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 1076ms
+ GET /favicon.ico 200 in 1265ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 742ms
+ ✓ Compiled /user/create-post in 339ms
+ GET /user/create-post 200 in 1523ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 455ms
+ ✓ Compiled in 623ms
+ ✓ Compiled in 526ms
+ GET /user/create-post 200 in 731ms
+ ○ Compiling /user/posts ...
+ ✓ Compiled /user/posts in 1405ms
+ GET /user/posts 200 in 2798ms
+ ✓ Compiled / in 358ms
+ GET / 200 in 1303ms
+ GET /?page=3 200 in 1519ms
+ ○ Compiling /blog/[slug]/[id] ...
+ ✓ Compiled /blog/[slug]/[id] in 2.2s
  ⨯ TypeError: fetch failed
-    at async authFetchGraphql (src\lib\fetchGraphQL.ts:31:20)
-    at async fetchUserPosts (src\lib\actions\postActions.ts:36:18)
-    at async Page (src\app\user\posts\page.tsx:14:33)
-  29 |   const session = await getSession()
-  30 |
-> 31 |   const response = await fetch(`${BACKEND_URL}/graphql`, {
-     |                    ^
-  32 |     method: "POST",
-  33 |     headers: {
-  34 |       "Content-Type": "application/json", {
-  digest: '2697797782',
+    at async fetchGraphQL (src\lib\fetchGraphQL.ts:6:20)
+    at async fetchPostById (src\lib\actions\postActions.ts:29:18)
+    at async PostPage (src\app\blog\[slug]\[id]\page.tsx:18:16)
+  4 | export const fetchGraphQL = async (query: string, variables = {}) => {
+  5 |
+> 6 |   const response = await fetch(`${BACKEND_URL}/graphql`, {
+    |                    ^
+  7 |     method: "POST",
+  8 |     headers: {
+  9 |       "Content-Type": "application/json", {
+  digest: '1200843246',
+  [cause]: [AggregateError: ] { code: 'ECONNREFUSED' }
+}
+ GET /blog/kira-my-my/33 200 in 5056ms
+ ⨯ TypeError: fetch failed
+    at async fetchGraphQL (src\lib\fetchGraphQL.ts:6:20)
+    at async fetchPostById (src\lib\actions\postActions.ts:29:18)
+    at async PostPage (src\app\blog\[slug]\[id]\page.tsx:18:16)
+  4 | export const fetchGraphQL = async (query: string, variables = {}) => {
+  5 |
+> 6 |   const response = await fetch(`${BACKEND_URL}/graphql`, {
+    |                    ^
+  7 |     method: "POST",
+  8 |     headers: {
+  9 |       "Content-Type": "application/json", {
+  digest: '1200843246',
+  [cause]: [AggregateError: ] { code: 'ECONNREFUSED' }
+}
+ GET /blog/kira-my-my/33 500 in 866ms
+ GET /favicon.ico 200 in 404ms
+ ⨯ TypeError: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dompurify$2f$dist$2f$purify$2e$es$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__.default.sanitize is not a function
+    at SanitizedContent (src\app\blog\[slug]\[id]\_components\SanitizedContent.tsx:23:31)
+  21 | const SanitizedContent = ({ content, className }: Props) => {
+  22 |   // Sanitize HTML yang diterima dari props sebelum dirender
+> 23 |   const cleanHtml = DOMPurify.sanitize(content);
+     |                               ^
+  24 |
+  25 |   return (
+  26 |     <div {
+  digest: '3448845805'
+}
+ GET /blog/kira-my-my/33 500 in 3266ms
+ POST /blog/kira-my-my/33 200 in 739ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 375ms
+ POST /blog/kira-my-my/33 200 in 520ms
+ POST /blog/kira-my-my/33 200 in 969ms
+ POST /blog/kira-my-my/33 200 in 940ms
+ ⨯ TypeError: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dompurify$2f$dist$2f$purify$2e$es$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__.default.sanitize is not a function
+    at SanitizedContent (src\app\blog\[slug]\[id]\_components\SanitizedContent.tsx:23:31)
+  21 | const SanitizedContent = ({ content, className }: Props) => {
+  22 |   // Sanitize HTML yang diterima dari props sebelum dirender
+> 23 |   const cleanHtml = DOMPurify.sanitize(content);
+     |                               ^
+  24 |
+  25 |   return (
+  26 |     <div {
+  digest: '3448845805'
+}
+ GET /blog/kira-my-my/33 500 in 1722ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 525ms
+ POST /blog/kira-my-my/33 200 in 2460ms
+ POST /blog/kira-my-my/33 200 in 448ms
+ POST /blog/kira-my-my/33 200 in 949ms
+ POST /blog/kira-my-my/33 200 in 1139ms
+ ⨯ TypeError: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dompurify$2f$dist$2f$purify$2e$es$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__.default.sanitize is not a function
+    at SanitizedContent (src\app\blog\[slug]\[id]\_components\SanitizedContent.tsx:23:31)
+  21 | const SanitizedContent = ({ content, className }: Props) => {
+  22 |   // Sanitize HTML yang diterima dari props sebelum dirender
+> 23 |   const cleanHtml = DOMPurify.sanitize(content);
+     |                               ^
+  24 |
+  25 |   return (
+  26 |     <div {
+  digest: '3448845805'
+}
+ GET /blog/kira-my-my/33 500 in 2204ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 531ms
+ POST /blog/kira-my-my/33 200 in 654ms
+ POST /blog/kira-my-my/33 200 in 470ms
+ ✓ Compiled in 462ms
+ ✓ Compiled in 272ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[Error: Failed to load chunk server/chunks/ssr/apps_front_src_519a3e39._.js from module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/blog/[slug]/[id]/page { GLOBAL_ERROR_MODULE => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", METADATA_0 => "[project]/apps/front/src/app/favicon.ico.mjs { IMAGE => \"[project]/apps/front/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js Server Component)", MODULE_1 => "[project]/apps/front/src/app/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/builtin/not-found.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/builtin/forbidden.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/builtin/unauthorized.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_5 => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_6 => "[project]/apps/front/src/app/blog/[slug]/[id]/page.tsx [app-rsc] (ecmascript, Next.js Server Component)" } [app-rsc] (ecmascript) <locals>] {
+  [cause]: SyntaxError: await is only valid in async functions and the top level bodies of modules
+      at <unknown> (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\apps_front_src_519a3e39._.js:27)
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/apps_front_src_519a3e39._.js from module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/blog/[slug]/[id]/page { GLOBAL_ERROR_MODULE => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", METADATA_0 => "[project]/apps/front/src/app/favicon.ico.mjs { IMAGE => \"[project]/apps/front/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js Server Component)", MODULE_1 => "[project]/apps/front/src/app/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/builtin/not-found.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/builtin/forbidden.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/builtin/unauthorized.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_5 => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_6 => "[project]/apps/front/src/app/blog/[slug]/[id]/page.tsx [app-rsc] (ecmascript, Next.js Server Component)" } [app-rsc] (ecmascript) <locals>] {
+  [cause]: SyntaxError: await is only valid in async functions and the top level bodies of modules
+      at <unknown> (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\apps_front_src_519a3e39._.js:27)
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/apps_front_src_519a3e39._.js from module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/blog/[slug]/[id]/page { GLOBAL_ERROR_MODULE => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", METADATA_0 => "[project]/apps/front/src/app/favicon.ico.mjs { IMAGE => \"[project]/apps/front/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js Server Component)", MODULE_1 => "[project]/apps/front/src/app/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/builtin/not-found.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/builtin/forbidden.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/builtin/unauthorized.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_5 => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_6 => "[project]/apps/front/src/app/blog/[slug]/[id]/page.tsx [app-rsc] (ecmascript, Next.js Server Component)" } [app-rsc] (ecmascript) <locals>] {
+  [cause]: SyntaxError: await is only valid in async functions and the top level bodies of modules
+      at <unknown> (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\apps_front_src_519a3e39._.js:27)
+}
+[Error: Failed to load chunk server/chunks/ssr/apps_front_src_519a3e39._.js from module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/blog/[slug]/[id]/page { GLOBAL_ERROR_MODULE => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", METADATA_0 => "[project]/apps/front/src/app/favicon.ico.mjs { IMAGE => \"[project]/apps/front/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js Server Component)", MODULE_1 => "[project]/apps/front/src/app/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/builtin/not-found.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/builtin/forbidden.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/builtin/unauthorized.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_5 => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_6 => "[project]/apps/front/src/app/blog/[slug]/[id]/page.tsx [app-rsc] (ecmascript, Next.js Server Component)" } [app-rsc] (ecmascript) <locals>] {
+  [cause]: SyntaxError: await is only valid in async functions and the top level bodies of modules
+      at <unknown> (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\apps_front_src_519a3e39._.js:27)
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/apps_front_src_519a3e39._.js from module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/blog/[slug]/[id]/page { GLOBAL_ERROR_MODULE => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", METADATA_0 => "[project]/apps/front/src/app/favicon.ico.mjs { IMAGE => \"[project]/apps/front/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js Server Component)", MODULE_1 => "[project]/apps/front/src/app/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/builtin/not-found.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/builtin/forbidden.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/builtin/unauthorized.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_5 => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_6 => "[project]/apps/front/src/app/blog/[slug]/[id]/page.tsx [app-rsc] (ecmascript, Next.js Server Component)" } [app-rsc] (ecmascript) <locals>] {
+  [cause]: SyntaxError: await is only valid in async functions and the top level bodies of modules
+      at <unknown> (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\apps_front_src_519a3e39._.js:27)
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/apps_front_src_519a3e39._.js from module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/blog/[slug]/[id]/page { GLOBAL_ERROR_MODULE => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", METADATA_0 => "[project]/apps/front/src/app/favicon.ico.mjs { IMAGE => \"[project]/apps/front/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js Server Component)", MODULE_1 => "[project]/apps/front/src/app/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/builtin/not-found.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/builtin/forbidden.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/builtin/unauthorized.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_5 => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_6 => "[project]/apps/front/src/app/blog/[slug]/[id]/page.tsx [app-rsc] (ecmascript, Next.js Server Component)" } [app-rsc] (ecmascript) <locals>] {
+  [cause]: SyntaxError: await is only valid in async functions and the top level bodies of modules
+      at <unknown> (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\apps_front_src_519a3e39._.js:27)
+}
+[Error: Failed to load chunk server/chunks/ssr/apps_front_src_519a3e39._.js from module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/blog/[slug]/[id]/page { GLOBAL_ERROR_MODULE => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", METADATA_0 => "[project]/apps/front/src/app/favicon.ico.mjs { IMAGE => \"[project]/apps/front/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js Server Component)", MODULE_1 => "[project]/apps/front/src/app/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/builtin/not-found.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/builtin/forbidden.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/builtin/unauthorized.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_5 => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_6 => "[project]/apps/front/src/app/blog/[slug]/[id]/page.tsx [app-rsc] (ecmascript, Next.js Server Component)" } [app-rsc] (ecmascript) <locals>] {
+  [cause]: SyntaxError: await is only valid in async functions and the top level bodies of modules
+      at <unknown> (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\apps_front_src_519a3e39._.js:27)
+}
+ ⨯ unhandledRejection: [Error: Failed to load chunk server/chunks/ssr/apps_front_src_519a3e39._.js from module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/blog/[slug]/[id]/page { GLOBAL_ERROR_MODULE => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", METADATA_0 => "[project]/apps/front/src/app/favicon.ico.mjs { IMAGE => \"[project]/apps/front/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js Server Component)", MODULE_1 => "[project]/apps/front/src/app/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/builtin/not-found.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/builtin/forbidden.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/builtin/unauthorized.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_5 => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_6 => "[project]/apps/front/src/app/blog/[slug]/[id]/page.tsx [app-rsc] (ecmascript, Next.js Server Component)" } [app-rsc] (ecmascript) <locals>] {
+  [cause]: SyntaxError: await is only valid in async functions and the top level bodies of modules
+      at <unknown> (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\apps_front_src_519a3e39._.js:27)
+}
+ ⨯ unhandledRejection:  [Error: Failed to load chunk server/chunks/ssr/apps_front_src_519a3e39._.js from module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/blog/[slug]/[id]/page { GLOBAL_ERROR_MODULE => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", METADATA_0 => "[project]/apps/front/src/app/favicon.ico.mjs { IMAGE => \"[project]/apps/front/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js Server Component)", MODULE_1 => "[project]/apps/front/src/app/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/builtin/not-found.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/builtin/forbidden.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/builtin/unauthorized.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_5 => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_6 => "[project]/apps/front/src/app/blog/[slug]/[id]/page.tsx [app-rsc] (ecmascript, Next.js Server Component)" } [app-rsc] (ecmascript) <locals>] {
+  [cause]: SyntaxError: await is only valid in async functions and the top level bodies of modules
+      at <unknown> (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\apps_front_src_519a3e39._.js:27)
+}
+ ⨯ [Error: Failed to load chunk server/chunks/ssr/apps_front_src_519a3e39._.js from module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/blog/[slug]/[id]/page { GLOBAL_ERROR_MODULE => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", METADATA_0 => "[project]/apps/front/src/app/favicon.ico.mjs { IMAGE => \"[project]/apps/front/src/app/favicon.ico (static in ecmascript)\" } [app-rsc] (structured image object, ecmascript, Next.js Server Component)", MODULE_1 => "[project]/apps/front/src/app/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/builtin/not-found.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/builtin/forbidden.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/builtin/unauthorized.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_5 => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_6 => "[project]/apps/front/src/app/blog/[slug]/[id]/page.tsx [app-rsc] (ecmascript, Next.js Server Component)" } [app-rsc] (ecmascript) <locals>] {
+  digest: '3880127218',
+  [cause]: SyntaxError: await is only valid in async functions and the top level bodies of modules
+      at <unknown> (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\apps_front_src_519a3e39._.js:27)
+}
+ ✓ Compiled in 1ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /blog/kira-my-my/33 500 in 6880ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 1096ms
+ GET /favicon.ico 200 in 1356ms
+ POST /blog/kira-my-my/33 200 in 1221ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 678ms
+ POST /blog/kira-my-my/33 200 in 379ms
+ POST /blog/kira-my-my/33 200 in 453ms
+ POST /blog/kira-my-my/33 200 in 342ms
+ ⨯ TypeError: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dompurify$2f$dist$2f$purify$2e$es$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__.default.sanitize is not a function
+    at SanitizedContent (src\app\blog\[slug]\[id]\_components\SanitizedContent.tsx:23:31)
+  21 | const SanitizedContent = ({ content, className }: Props) => {
+  22 |   // Sanitize HTML yang diterima dari props sebelum dirender
+> 23 |   const cleanHtml = DOMPurify.sanitize(content);
+     |                               ^
+  24 |
+  25 |   return (
+  26 |     <div {
+  digest: '3448845805'
+}
+ GET /blog/kira-my-my/33 500 in 1007ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 700ms
+ POST /blog/kira-my-my/33 200 in 2406ms
+ POST /blog/kira-my-my/33 200 in 578ms
+ POST /blog/kira-my-my/33 200 in 1101ms
+ POST /blog/kira-my-my/33 200 in 2062ms
+ ✓ Compiled in 653ms
+ ✓ Compiled in 875ms
+ ⨯ ReferenceError: DOMPurifyModule is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\blog\[slug]\[id]\_components\SanitizedContent.tsx:41:19)
+  39 |
+  40 |
+> 41 | const DOMPurify = (DOMPurifyModule as any).default || DOMPurifyModule;
+     |                   ^
+  42 |
+  43 | type Props = {
+  44 |   content: string; {
+  digest: '1280697874'
+}
+ ✓ Compiled in 614ms
+ GET /blog/kira-my-my/33 500 in 2782ms
+ GET /favicon.ico 200 in 410ms
+ ⨯ TypeError: DOMPurify.sanitize is not a function
+    at SanitizedContent (src\app\blog\[slug]\[id]\_components\SanitizedContent.tsx:50:31)
+  48 | const SanitizedContent = ({ content, className }: Props) => {
+  49 |   // Sanitize HTML yang diterima dari props sebelum dirender
+> 50 |   const cleanHtml = DOMPurify.sanitize(content);
+     |                               ^
+  51 |
+  52 |   return (
+  53 |     <div {
+  digest: '856873414'
+}
+ GET /blog/kira-my-my/33 500 in 2441ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 2536ms
+ GET /favicon.ico 200 in 679ms
+ POST /blog/kira-my-my/33 200 in 829ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 500ms
+ POST /blog/kira-my-my/33 200 in 529ms
+ ✓ Compiled in 501ms
+ POST /blog/kira-my-my/33 200 in 1200ms
+ POST /blog/kira-my-my/33 200 in 700ms
+ POST /blog/kira-my-my/33 200 in 2645ms
+ ⨯ TypeError: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$dompurify$2f$dist$2f$purify$2e$es$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__.default.sanitize is not a function
+    at SanitizedContent (src\app\blog\[slug]\[id]\_components\SanitizedContent.tsx:23:31)
+  21 | const SanitizedContent = ({ content, className }: Props) => {
+  22 |   // Sanitize HTML yang diterima dari props sebelum dirender
+> 23 |   const cleanHtml = DOMPurify.sanitize(content);
+     |                               ^
+  24 |
+  25 |   return (
+  26 |     <div {
+  digest: '3448845805'
+}
+ GET /blog/kira-my-my/33 500 in 2478ms
+ ⨯ [Error: aborted] { code: 'ECONNRESET', digest: '3485663598' }
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 596ms
+ POST /blog/kira-my-my/33 200 in 1984ms
+ POST /blog/kira-my-my/33 200 in 395ms
+ ✓ Compiled in 565ms
+ ✓ Compiled in 635ms
+ ✓ Compiled /blog/[slug]/[id] in 308ms
+ GET /blog/kira-my-my/33 200 in 808ms
+ POST /blog/kira-my-my/33 200 in 2279ms
+ POST /blog/kira-my-my/33 200 in 673ms
+ GET /blog/kira-my-my/33 200 in 2929ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 908ms
+ POST /blog/kira-my-my/33 200 in 834ms
+ POST /blog/kira-my-my/33 200 in 381ms
+ POST /blog/kira-my-my/33 200 in 785ms
+ POST /blog/kira-my-my/33 200 in 675ms
+ POST /blog/kira-my-my/33 200 in 861ms
+ POST /blog/kira-my-my/33 200 in 1163ms
+ ⨯ [Error: aborted] { code: 'ECONNRESET', digest: '3485663598' }
+ GET /blog/kira-my-my/33 200 in 2030ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 882ms
+ POST /blog/kira-my-my/33 200 in 1186ms
+ POST /blog/kira-my-my/33 200 in 706ms
+ ✓ Compiled in 644ms
+ ✓ Compiled in 587ms
+ ✓ Compiled /blog/[slug]/[id] in 434ms
+ GET /blog/kira-my-my/33 200 in 976ms
+ GET /blog/kira-my-my/33 200 in 381ms
+ POST /blog/kira-my-my/33 200 in 1304ms
+ POST /blog/kira-my-my/33 200 in 989ms
+ POST /blog/kira-my-my/33 200 in 614ms
+ POST /blog/kira-my-my/33 200 in 644ms
+ ✓ Compiled in 786ms
+ ✓ Compiled in 860ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 679ms
+ POST /blog/kira-my-my/33 200 in 2085ms
+ GET /blog/kira-my-my/33 200 in 2489ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 639ms
+ POST /blog/kira-my-my/33 200 in 1037ms
+ POST /blog/kira-my-my/33 200 in 665ms
+ ✓ Compiled in 320ms
+ ⨯ Failed to generate static paths for /blog/[slug]/[id]:
+Error: Could not parse module '[project]/apps/front/src/app/blog/[slug]/[id]/_components/SanitizedContent.tsx'
+
+Unexpected token `)`. Expected jsx identifier
+    at __TURBOPACK__module__evaluation__ (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\[root-of-the-server]__bbc0af9f._.js:610:219)
+    at __TURBOPACK__module__evaluation__ (D:\Data Programming D\kira-blog\apps\front\.next\server\chunks\ssr\[root-of-the-server]__bbc0af9f._.js:858:47) {
+  type: 'Error',
+  code: 'MODULE_UNPARSABLE'
+}
+ ✓ Compiled in 884ms
+ ✓ Compiled /blog/[slug]/[id] in 436ms
+ ✓ Compiled in 575ms
+ GET /blog/kira-my-my/33 200 in 3346ms
+ GET /blog/kira-my-my/33 200 in 242ms
+ ✓ Compiled in 258ms
+ POST /blog/kira-my-my/33 200 in 1287ms
+ POST /blog/kira-my-my/33 200 in 493ms
+ POST /blog/kira-my-my/33 200 in 1330ms
+ POST /blog/kira-my-my/33 200 in 453ms
+ POST /blog/kira-my-my/33 200 in 724ms
+ POST /blog/kira-my-my/33 200 in 832ms
+ GET /blog/kira-my-my/33 200 in 1534ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 557ms
+ POST /blog/kira-my-my/33 200 in 723ms
+ POST /blog/kira-my-my/33 200 in 589ms
+ GET /?page=3 200 in 1121ms
+ GET /?page=3 200 in 1119ms
+ GET /blog/kira-my-my/33 200 in 1140ms
+ POST /blog/kira-my-my/33 200 in 715ms
+ POST /blog/kira-my-my/33 200 in 1017ms
+ POST /blog/kira-my-my/33 200 in 1357ms
+ POST /blog/kira-my-my/33 200 in 1118ms
+ POST /blog/kira-my-my/33 200 in 1038ms
+ POST /blog/kira-my-my/33 200 in 988ms

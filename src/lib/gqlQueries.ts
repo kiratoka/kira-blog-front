@@ -27,8 +27,12 @@ getPostById(id:$id) {
     thumbnail
     content
     createdAt
+    path
+    published
     author {
+        id
         name
+        avatar
     }
     tags{
         id

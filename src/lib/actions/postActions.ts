@@ -5,6 +5,9 @@ import { authFetchGraphql, fetchGraphQL } from "../fetchGraphQL"
 import { GET_POST_BY_ID, GET_POSTS, GET_USER_POSTS } from "../gqlQueries"
 import { Post } from "../types/modelTypes"
 import { transformTakeSkip } from "../helpers"
+import { useMutation } from "@tanstack/react-query"
+import { BACKEND_URL } from "../constants"
+import { Session } from "../session"
 
 export const fetchPosts = async ({
     page,
@@ -43,11 +46,4 @@ export const fetchUserPosts = async ({ page, pageSize }: { page?: number, pageSi
     }
 
 
-}
-
-
-
-export const createPost = async () => {
-
-    
 }

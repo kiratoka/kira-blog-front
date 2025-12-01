@@ -11,7 +11,7 @@ type Props = {
   postId: number;
   user?: SessionUser;
 };
-const Like = (props: Props) => {
+const   Like = (props: Props) => {
   const { data, refetch: refetchPostLikeData } = useQuery({
     queryKey: ["GET_POST_LIKE_DATA", props.postId],
     queryFn: async () => await getPostLikeData(props.postId),
