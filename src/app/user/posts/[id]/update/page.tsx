@@ -20,8 +20,6 @@ const page = async (props: Props) => {
     return (
         <div>
 
-            page {id}
-
 
 
             {String(session!.user.id) === String(post.author.id) ?
