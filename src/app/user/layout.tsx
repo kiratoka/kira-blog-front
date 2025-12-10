@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode } from "react";
 
 type Props = PropsWithChildren<{
-  modal: ReactNode;
+  modal?: ReactNode;
 }>;
 const PostsLayout = ({ children, modal }: Props) => {
   return (
@@ -11,5 +11,5 @@ const PostsLayout = ({ children, modal }: Props) => {
     </>
   );
 };
-    
+
 export default PostsLayout;                     
