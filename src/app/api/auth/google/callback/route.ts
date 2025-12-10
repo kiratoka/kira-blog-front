@@ -1,9 +1,9 @@
 import { BACKEND_URL } from "@/lib/constants";
 import { createSession } from "@/lib/session";
-import { redirect } from "next/navigation";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextResponse) {
+
+export async function GET(req: NextRequest) {
 
     const { searchParams } = new URL(req.url)
 
@@ -13,7 +13,10 @@ export async function GET(req: NextResponse) {
     const avatar = searchParams.get("avatar")
 
 
-    if (!accessToken || !userId || !name) throw new Error("Google oauth failed!")
+
+    if (!accessToken || !userId || !name) {
+        return NextResponse.json({ error: "Google oauth failed!" }, { status: 400 });
+    }
 
     const res = await fetch(`${BACKEND_URL}/auth/verify-token`, {
         headers: {
@@ -23,7 +26,9 @@ export async function GET(req: NextResponse) {
     })
 
 
-    if (res.status === 401) throw new Error("Jwt verification failed!")
+    if (res.status === 401) {
+        return NextResponse.json({ error: "Jwt verification failed!" }, { status: 401 });
+    }
 
 
     await createSession({
@@ -35,6 +40,6 @@ export async function GET(req: NextResponse) {
         accessToken
     })
 
-    redirect("/")
+    return NextResponse.redirect(new URL("/", req.url));
 
 }

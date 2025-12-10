@@ -129,7 +129,7 @@ export default function InputCreatePost({ session }: { session: Session | null }
       console.log('Fetching to:', fullUrl);
       console.log('Token:', token ? 'exists' : 'missing');
       console.log('FormData entries:');
-      
+
       const response = await fetch(fullUrl, {
         method: "POST",
         headers: {
@@ -183,9 +183,9 @@ export default function InputCreatePost({ session }: { session: Session | null }
         tags: [],
       });
       if (previewUrl) {
-        try {
-          URL.revokeObjectURL(previewUrl);
-        } catch (e) { }
+
+        URL.revokeObjectURL(previewUrl);
+
       }
       setPreviewURl("");
       setTagInput("");
