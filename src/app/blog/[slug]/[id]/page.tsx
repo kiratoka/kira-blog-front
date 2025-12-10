@@ -4,8 +4,8 @@ import SanitizedContent from "./_components/SanitizedContent";
 import Comments from "./_components/Comments";
 import { getSession } from "@/lib/session";
 import Like from "./_components/Like";
-import { Calendar, Eye, Share2 } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Calendar, Share2 } from "lucide-react";
+
 
 
 type Props = {
@@ -50,21 +50,15 @@ const PostPage = async ({ params }: Props) => {
               <div className="flex items-center gap-2 text-slate-600">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center overflow-hidden">
                   {post.author.avatar ? (
-                    <Avatar className="w-10 h-10">
-                      <AvatarImage
+                    <div className="w-10 h-10 rounded-full overflow-hidden">
+                      <Image
                         src={post.author.avatar}
                         alt={post.author.name}
+                        width={40}
+                        height={40}
                         className="object-cover w-10 h-10"
                       />
-                      <AvatarFallback>
-                        {post.author.name
-                          .split(' ')
-                          .map(word => word[0])
-                          .join('')
-                          .toUpperCase()
-                          .slice(0, 2)}
-                      </AvatarFallback>
-                    </Avatar>
+                    </div>
                   ) : (
                     <span className="text-white font-semibold text-lg">
                       {post.author.name.charAt(0)}

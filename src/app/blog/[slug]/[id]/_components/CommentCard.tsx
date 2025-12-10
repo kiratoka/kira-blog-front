@@ -1,28 +1,15 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import { CommentEntity } from "@/lib/types/modelTypes";
-import { UserIcon } from "@heroicons/react/20/solid";
-import { Clock, Heart, MessageCircle } from "lucide-react";
+
+import { Clock } from "lucide-react";
+import Image from "next/image";
 
 type Props = {
   comment: CommentEntity;
 };
 
 const CommentCard = ({ comment }: Props) => {
-  const formatDate = (date: Date) => {
-    const now = new Date();
-    const commentDate = new Date(date);
-    const diffInSeconds = Math.floor((now.getTime() - commentDate.getTime()) / 1000);
 
-    if (diffInSeconds < 60) return 'just now';
-    if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
-    if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
-    if (diffInSeconds < 604800) return `${Math.floor(diffInSeconds / 86400)}d ago`;
-
-    return commentDate.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric'
-    });
-  };
 
   const getInitials = (name: string) => {
     return name
@@ -42,16 +29,22 @@ const CommentCard = ({ comment }: Props) => {
         {/* Avatar with glassmorphism effect */}
         <div className="relative flex-shrink-0">
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
-          <Avatar className="relative w-11 h-11 ring-2 ring-white shadow-lg group-hover:ring-cyan-300 transition-all duration-300">
-            <AvatarImage
-              src={comment.author.avatar}
-              alt={comment.author.name}
-              className="object-cover"
-            />
-            <AvatarFallback className="bg-gradient-to-br from-cyan-400 via-cyan-500 to-blue-500 text-white font-bold text-sm">
-              {getInitials(comment.author.name)}
-            </AvatarFallback>
-          </Avatar>
+          <div className="relative w-11 h-11 ring-2 ring-white shadow-lg group-hover:ring-cyan-300 transition-all duration-300 rounded-full overflow-hidden">
+            {comment.author.avatar ? (
+              <Image
+                src={comment.author.avatar}
+                alt={comment.author.name}
+                fill
+                sizes="44px"
+                className="object-cover w-11 h-11 rounded-full"
+                style={{ objectFit: "cover" }}
+              />
+            ) : (
+              <div className="flex items-center justify-center w-full h-full bg-gradient-to-br from-cyan-400 via-cyan-500 to-blue-500 text-white font-bold text-sm rounded-full">
+                {getInitials(comment.author.name)}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Content */}

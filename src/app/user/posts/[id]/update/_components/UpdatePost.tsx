@@ -8,7 +8,7 @@ import { PostFormSchema } from '@/lib/zodSchemas/postFormSchema';
 import { CloudArrowUpIcon, DocumentTextIcon, EyeSlashIcon, GlobeAltIcon, PhotoIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import { useMutation } from '@tanstack/react-query';
 import { TagIcon } from 'lucide-react';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { ChangeEvent, useState } from 'react'
 
 
@@ -25,7 +25,7 @@ interface FormDataLocal {
 
 const UpdatePost = ({ session, post }: { session: Session, post: Post }) => {
 
-const router = useRouter()
+    const router = useRouter()
 
     const [previewUrl, setPreviewURl] = useState("")
 
@@ -47,10 +47,6 @@ const router = useRouter()
 
     // State tambahan untuk menampung thumbnail awal dari db (string URL), 
     // sedangkan file input tetap pakai formData.thumbnail (tipe File/null)
-    const [originalThumbnail, setOriginalThumbnail] = useState<string | null>(
-        typeof post.thumbnail === "string" ? post.thumbnail : null
-    );
-
     const [formData, setFormData] = useState<FormDataLocal>({
         id: post.id,
         title: post.title,
@@ -111,7 +107,7 @@ const router = useRouter()
     }
 
 
-    const handlePublished = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handlePublished = () => {
         setFormData(prev => ({
             ...prev,
             isPublished: !formData.isPublished
@@ -168,9 +164,7 @@ const router = useRouter()
             console.log('Fetching to:', fullUrl);
             console.log('Token:', token ? 'exists' : 'missing');
             console.log('FormData entries:');
-            for (let [key, value] of fd.entries()) {
-                console.log(key, value);
-            }
+
 
             const response = await fetch(fullUrl, {
                 method: "PATCH",
@@ -243,17 +237,21 @@ const router = useRouter()
                 tags: [],
             });
             if (previewUrl) {
-                try {
-                    URL.revokeObjectURL(previewUrl);
-                } catch (e) { }
+                URL.revokeObjectURL(previewUrl);
             }
             setPreviewURl("");
             setTagInput("");
             // optional: show toast or redirect user
             alert("Post successfully created");
-        } catch (err: any) {
+        } catch (err) {
             // tampilkan error sederhana
-            alert("Failed to create post: " + (err?.message ?? "unknown error"));
+            if (err instanceof Error) {
+                alert("Failed to create post: " + err.message);
+            } else if (typeof err === "object" && err !== null && "message" in err) {
+                alert("Failed to create post: " + String((err as { message: unknown }).message));
+            } else {
+                alert("Failed to create post: unknown error");
+            }
         }
 
 
@@ -290,8 +288,15 @@ const router = useRouter()
             await deleteMutation.mutateAsync();
             router.push("/user/posts")
         }
-        catch (e: any) {
-            throw new Error("Error when deleting post", e)
+        catch (err) {
+            if (err instanceof Error) {
+                alert("Failed to delete post: " + err.message);
+            } else if (typeof err === "object" && err !== null && "message" in err) {
+                alert("Failed to delete post: " + String((err as { message: unknown }).message));
+            } else {
+                alert("Failed to delete post: unknown error");
+            }
+            console.error('Error when deleting post:', err);
         }
     }
 

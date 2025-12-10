@@ -1,13 +1,13 @@
-import { getSession } from "@/lib/session";
+import { getSession, Session } from "@/lib/session";
 import Link from "next/link";
 import SignInPanel from "./SignInPanel";
 import Profile from "./Profile";
 
-type Props = {};
 
-const Navbar = async (props: Props) => {
+const Navbar = async () => {
   const session = await getSession();
 
+  
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-cyan-100 shadow-lg shadow-cyan-500/5">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,7 +56,7 @@ const Navbar = async (props: Props) => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <MobileMenuButton session={session} />
+            <MobileMenuButton />
           </div>
         </div>
 
@@ -91,7 +91,7 @@ const NavLink = ({ href, label }: { href: string; label: string }) => (
 );
 
 // Mobile Menu Button Component (Client Component needed for state)
-const MobileMenuButton = ({ session }: { session: any }) => (
+const MobileMenuButton = () => (
   <button
     className="p-2 rounded-xl bg-gradient-to-br from-cyan-50 to-blue-50 hover:from-cyan-100 hover:to-blue-100 transition-all duration-300"
     aria-label="Toggle menu"
@@ -103,7 +103,7 @@ const MobileMenuButton = ({ session }: { session: any }) => (
 );
 
 // Mobile Navigation Component
-const MobileNav = ({ session }: { session: any }) => (
+const MobileNav = ({ session }: { session: Session | null }) => (
   <div className="md:hidden border-t border-cyan-100 py-4 space-y-2">
     <MobileNavLink href="/" label="Blog" />
     <MobileNavLink href="#about" label="About" />

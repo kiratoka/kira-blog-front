@@ -4,14 +4,14 @@ import UpdatePost from "./_components/UpdatePost"
 import { getSession } from "@/lib/session"
 
 type Props = {
-    params: {
+    params:Promise<{
         id: number
-    }
+    }>
 }
 
 
 const page = async (props: Props) => {
-    const id = await props.params.id
+    const { id } = await props.params
     const session = await getSession();
     const post = await fetchPostById(+id)
 

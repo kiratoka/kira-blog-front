@@ -10,7 +10,6 @@ const DesktopNavbar = (props: Props) => {
     setScrollPosition(window.scrollY);
   };
 
-  const pathname = usePathname();
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -19,7 +18,6 @@ const DesktopNavbar = (props: Props) => {
   });
 
   const isScrollDown = scrollPosition > 10;
-  const isHome = pathname === "/";
   return (
     <nav
       className={cn(

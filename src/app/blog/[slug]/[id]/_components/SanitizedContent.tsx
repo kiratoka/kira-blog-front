@@ -13,7 +13,6 @@
  * <SanitizedContent content={'<p>Halo <strong>world</strong>!</p>'} className="prose" />
  */
 
-import DOMPurify from "dompurify";
 type Props = {
   content: string;
   className?: string;

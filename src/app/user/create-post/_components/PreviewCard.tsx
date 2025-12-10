@@ -2,7 +2,7 @@ import React from 'react'
 import { Tag } from '@/lib/types/modelTypes'
 import { Calendar, Eye, Share2 } from "lucide-react"
 import { TagIcon } from '@heroicons/react/24/outline'
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import SanitizedContent from '@/app/blog/[slug]/[id]/_components/SanitizedContent'
 import { SessionUser } from '@/lib/session'
 

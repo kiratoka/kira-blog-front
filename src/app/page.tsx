@@ -2,7 +2,7 @@ import Hero from "@/components/hero";
 import Posts from "@/components/Posts";
 import { fetchPosts } from "@/lib/actions/postActions";
 import { DEFAULT_PAGE_SIZE } from "@/lib/constants";
-import { getSession } from "@/lib/session";
+
 
 type Props = {
 
@@ -15,7 +15,6 @@ export default async function Home({ searchParams }: Props) {
   const { totalPosts, posts } = await fetchPosts(
     { page: page ? +page : undefined }
   )
-  const session = await getSession()
   
 
 

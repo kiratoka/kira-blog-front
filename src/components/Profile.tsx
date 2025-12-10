@@ -1,8 +1,6 @@
 import { SessionUser } from "@/lib/session";
 import { Popover } from "@radix-ui/react-popover";
 import { PopoverContent, PopoverTrigger } from "./ui/popover";
-import { Avatar } from "@radix-ui/react-avatar";
-import { AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
   ArrowRightStartOnRectangleIcon,
   ListBulletIcon,
@@ -10,25 +8,34 @@ import {
   UserIcon,
 } from "@heroicons/react/20/solid";
 import Link from "next/link";
+import Image from "next/image";
 
 type Props = {
   user: SessionUser;
 };
 const Profile = ({ user }: Props) => {
 
+  console.log("PP anime:", user.avatar);
 
   return (
     <Popover>
       <PopoverTrigger>
-        <Avatar>
-          <AvatarImage
-            className="rounded-full w-14 border-2 border-white"
-            src={user.avatar}
-          />
-          <AvatarFallback>
-            <UserIcon className="w-8 text-slate-500" />
-          </AvatarFallback>
-        </Avatar>
+        <div className="relative w-14 h-14">
+          {user.avatar ? (
+            <Image
+              src={user.avatar}
+              alt={user.name || "User avatar"}
+              fill
+              className="rounded-full border-2 border-white object-cover"
+              sizes="56px"
+              priority
+            />
+          ) : (
+            <div className="flex items-center justify-center rounded-full w-14 h-14 bg-slate-100 border-2 border-white">
+              <UserIcon className="w-8 text-slate-500" />
+            </div>
+          )}
+        </div>
       </PopoverTrigger>
       <PopoverContent>
         <div className="flex justify-center items-center gap-3">

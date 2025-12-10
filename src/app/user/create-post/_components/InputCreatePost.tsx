@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, ChangeEvent } from 'react';
-import { CloudArrowUpIcon, DocumentTextIcon, GlobeAltIcon, EyeSlashIcon, TagIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { DocumentTextIcon } from '@heroicons/react/24/outline';
 import { Tag } from '@/lib/types/modelTypes';
 import { Session } from '@/lib/session';
 import { useMutation } from '@tanstack/react-query';
@@ -129,10 +129,7 @@ export default function InputCreatePost({ session }: { session: Session | null }
       console.log('Fetching to:', fullUrl);
       console.log('Token:', token ? 'exists' : 'missing');
       console.log('FormData entries:');
-      for (let [key, value] of fd.entries()) {
-        console.log(key, value);
-      }
-
+      
       const response = await fetch(fullUrl, {
         method: "POST",
         headers: {
@@ -193,8 +190,14 @@ export default function InputCreatePost({ session }: { session: Session | null }
       setPreviewURl("");
       setTagInput("");
       alert("Post berhasil dibuat");
-    } catch (err: any) {
-      alert("Gagal membuat post: " + (err?.message ?? "unknown error"));
+    } catch (err) {
+      if (err instanceof Error) {
+        alert("Gagal membuat post: " + err.message);
+      } else if (typeof err === "object" && err !== null && "message" in err) {
+        alert("Gagal membuat post: " + String((err as { message: unknown }).message));
+      } else {
+        alert("Gagal membuat post: unknown error");
+      }
     }
   }
 

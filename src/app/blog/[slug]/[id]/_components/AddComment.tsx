@@ -18,7 +18,7 @@ import { MessageSquarePlus, Send, Sparkles } from "lucide-react";
 import { useActionState, useEffect, useState } from "react";
 
 import { toast } from "sonner";
-import { fa } from "zod/v4/locales";
+
 
 
 type Props = {
@@ -39,12 +39,13 @@ const AddComment = (props: Props) => {
   const [state, action] = useActionState(saveComment, undefined);
   const [open, setOpen] = useState(false);
 
-  // Penjelasan:
-  // Error ini muncul karena object literal yang dilempar ke function `toast()` memiliki property `title` dan `description`.
-  // Namun, berdasarkan dokumentasi library `sonner`, function `toast()` hanya menerima string atau ReactNode
-  // sebagai argumen pertama, bukan object literal seperti pada contoh ini.
-  // Untuk memperbaikinya, cukup kirim pesan toast sebagai string -- misal, gabungkan title dan description,
-  // atau gunakan toast.custom jika ingin komponen lebih kompleks.
+
+
+  // Maksud warning ini: React Hook useEffect membutuhkan daftar dependensi yang tepat agar efek dijalankan secara benar.
+  // Jika kita menggunakan props di dalam useEffect, idealnya yang dimasukkan ke dependency array adalah property yang benar-benar dipakai
+  // bukan keseluruhan object props, karena props akan berubah setiap ada update prop apapun, sehingga useEffect bisa berjalan terlalu sering.
+  // Cara mengatasinya: destruktur properti yang dipakai (misal refetch) dari props sebelum useEffect, lalu gunakan variabel tersebut di useEffect dan masukkan ke dependency array.
+  const { refetch } = props;
 
   useEffect(() => {
     if (state?.message) {
@@ -52,11 +53,10 @@ const AddComment = (props: Props) => {
       toast(`${state?.ok ? "Success: " : "Oops: "}${state?.message}`);
     }
     if (state?.ok) {
-      setOpen(false)
-      props.refetch();
-
+      setOpen(false);
+      refetch();
     }
-  }, [state]);
+  }, [state, refetch]);
   return (
     <Dialog open={open} onOpenChange={(o) => setOpen(o)}>
       <DialogTrigger asChild>

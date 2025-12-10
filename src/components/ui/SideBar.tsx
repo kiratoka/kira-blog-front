@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { PropsWithChildren, ReactNode, RefObject, useRef, useState } from "react";
+import { PropsWithChildren, ReactNode, useRef, useState } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 
 
