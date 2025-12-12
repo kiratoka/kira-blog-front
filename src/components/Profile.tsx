@@ -15,7 +15,6 @@ type Props = {
 };
 const Profile = ({ user }: Props) => {
 
-  console.log("PP anime:", user.avatar);
 
   return (
     <Popover>

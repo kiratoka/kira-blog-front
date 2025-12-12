@@ -246,7 +246,7 @@ const UpdatePost = ({ session, post }: { session: Session, post: Post }) => {
         } catch (err) {
             // tampilkan error sederhana
             if (err instanceof Error) {
-                alert("Failed to create post: " + err.message);
+                alert("Failed to update post: " + err.message);
             } else if (typeof err === "object" && err !== null && "message" in err) {
                 alert("Failed to create post: " + String((err as { message: unknown }).message));
             } else {
