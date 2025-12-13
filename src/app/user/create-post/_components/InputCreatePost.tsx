@@ -5,7 +5,7 @@ import { DocumentTextIcon } from '@heroicons/react/24/outline';
 import { Tag } from '@/lib/types/modelTypes';
 import { Session } from '@/lib/session';
 import { useMutation } from '@tanstack/react-query';
-import { BACKEND_URL } from '@/lib/constants';
+
 import { PostFormSchema } from '@/lib/zodSchemas/postFormSchema';
 import PreviewCard from './PreviewCard';
 import ErrorAlert from './ErrorAlert';
@@ -125,7 +125,7 @@ export default function InputCreatePost({ session }: { session: Session | null }
   const createPostMutation = useMutation({
     mutationFn: async (fd: FormData) => {
       const token = session?.accessToken
-      const fullUrl = `${BACKEND_URL}/post`;
+      const fullUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/post`;
       console.log('Fetching to:', fullUrl);
       console.log('Token:', token ? 'exists' : 'missing');
       console.log('FormData entries:');

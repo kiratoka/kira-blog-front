@@ -1,7 +1,7 @@
 "use client"
 
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { BACKEND_URL } from '@/lib/constants';
+
 import { Session } from '@/lib/session'
 import { Post, Tag } from '@/lib/types/modelTypes'
 import { PostFormSchema } from '@/lib/zodSchemas/postFormSchema';
@@ -59,6 +59,7 @@ const UpdatePost = ({ session, post }: { session: Session, post: Post }) => {
 
 
 
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -160,7 +161,7 @@ const UpdatePost = ({ session, post }: { session: Session, post: Post }) => {
             const token = session?.accessToken
 
             // LOG URL LENGKAP
-            const fullUrl = `${BACKEND_URL}/post`;
+            const fullUrl = `${backendUrl}/post`;
             console.log('Fetching to:', fullUrl);
             console.log('Token:', token ? 'exists' : 'missing');
             console.log('FormData entries:');
@@ -263,7 +264,7 @@ const UpdatePost = ({ session, post }: { session: Session, post: Post }) => {
             const token = session.accessToken
             const postId = post.id
             const path = formData.path
-            const response = await fetch(`${BACKEND_URL}/post`, {
+            const response = await fetch(`${backendUrl}/post`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`,

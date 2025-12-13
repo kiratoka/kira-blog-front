@@ -1,4 +1,4 @@
-import { BACKEND_URL } from "@/lib/constants";
+
 import { createSession } from "@/lib/session";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
         return NextResponse.json({ error: "Google oauth failed!" }, { status: 400 });
     }
 
-    const res = await fetch(`${BACKEND_URL}/auth/verify-token`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/verify-token`, {
         headers: {
             authorization: `Bearer ${accessToken}`
 

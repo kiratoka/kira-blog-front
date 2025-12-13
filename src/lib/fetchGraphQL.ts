@@ -1,9 +1,13 @@
-import { BACKEND_URL } from "./constants"
+
 import { getSession } from "./session";
+
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
 
 export const fetchGraphQL = async (query: string, variables = {}) => {
 
-  const response = await fetch(`${BACKEND_URL}/graphql`, {
+
+
+  const response = await fetch(`${backendUrl}/graphql`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -28,7 +32,7 @@ export const fetchGraphQL = async (query: string, variables = {}) => {
 export const authFetchGraphql = async (query: string, variables = {}) => {
   const session = await getSession()
 
-  const response = await fetch(`${BACKEND_URL}/graphql`, {
+  const response = await fetch(`${backendUrl}/graphql`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
