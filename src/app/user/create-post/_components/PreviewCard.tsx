@@ -1,28 +1,64 @@
-import React from 'react'
+"use client"
+
+
 import { Tag } from '@/lib/types/modelTypes'
 import { Calendar, Eye, Share2 } from "lucide-react"
 import { TagIcon } from '@heroicons/react/24/outline'
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import SanitizedContent from '@/app/blog/[slug]/[id]/_components/SanitizedContent'
 import { SessionUser } from '@/lib/session'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { serialize } from "next-mdx-remote/serialize"
+
+import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+
 
 // NOTE: We'll use dangerouslySetInnerHTML as done in the real article page.
 //      (for live preview, it's expected you directly render the raw HTML; if you want, you could also use the SanitizedContent component)
 interface PreviewCardProps {
     formData: {
-        title: string
-        content: string
-        thumbnail: File | null
-        isPublished: boolean
+        title: string;
+        content: string;
+        thumbnail: File | null | string;
+        isPublished: boolean;
         tags: Tag[]
+        path?: string
     }
-    previewUrl: string
+    previewUrl: string 
     user: SessionUser
 }
 
 const PreviewCard: React.FC<PreviewCardProps> = ({ formData, previewUrl, user }) => {
-    const hasContent = formData.title || formData.content || previewUrl || (formData.tags && formData.tags.length > 0)
-    if (!hasContent) return null
+
+
+
+    const [compiled, setCompiled] = useState<MDXRemoteSerializeResult<Record<string, unknown>> | null>(null)
+
+    // ERROR PENYEBAB DAN PENJELASAN:
+    // Error ini terjadi karena di React, hooks seperti useState/useEffect TIDAK BOLEH Ditaruh di bawah percabangan/conditional rendering!
+    // if (!hasContent) return null
+    // menyebabkan:
+    // - kadang hooks di bawah tidak pernah dieksekusi (urutan pemanggilan hooks berubah-ubah saat render)
+    // - ini menghasilkan error: "Rendered more hooks than during the previous render."
+    // BACAAN: https://react.dev/reference/react/useState#storing-information-from-previous-renders
+
+    // Cara memperbaikinya:
+    // - LARANGAN: Jangan pernah letakkan return/null sebelum semua hooks dijalankan (jangan beri conditional render sebelum hooks)
+    // - Solusi: Jalankan semua hooks tanpa kondisi, lalu baru conditional rendering isi komponen di dalam return (bukan di dalam logika utama)
+
+    // Jadi, ubah menjadi seperti ini:
+    const hasContent = formData.title
+        || formData.content
+        || previewUrl
+        || (formData.tags && formData.tags.length > 0);
+
+    // ... hooks tetap selalu berjalan
+
+    // Di bagian return nanti, lakukan conditional rendering:
+    // return (!hasContent ? null : <div> ... </div> )
+    // (atau dengan && operator di dalam return)
+
 
     // For dummy author display
     const author = {
@@ -32,16 +68,39 @@ const PreviewCard: React.FC<PreviewCardProps> = ({ formData, previewUrl, user })
     // Fake current date for preview
     const postDate = new Date()
 
+
+    useEffect(() => {
+
+        async function compile() {
+
+
+            const mdxSource = await serialize(formData.content)
+            setCompiled(mdxSource)
+        }
+
+        compile()
+    }, [formData.content])
+
+
     return (
-        <div className="mt-8 bg-gradient-to-br from-slate-50 via-cyan-50/30 to-blue-50/30 rounded-3xl shadow-xl border border-cyan-100 overflow-hidden">
+        <div className="mt-8 bg-gradient-to-br from-slate-50 via-cyan-50/30 to-blue-50/30 rounded-3xl shadow-xl border border-cyan-100 overflow-hidden max-w-4xl mx-auto">
             {/* Hero Image */}
             <div className="relative w-full h-60 sm:h-96 bg-gradient-to-br from-cyan-400 to-blue-500 overflow-hidden">
-                {previewUrl && (
+                {previewUrl ? (
                     <img
                         src={previewUrl}
                         alt="Preview Thumbnail"
                         className="w-full h-full object-cover opacity-90"
                     />
+                ) : (
+                    // Tampilkan string url dari formData.thumbnail jika tersedia dan bertipe string
+                    (typeof formData.thumbnail === "string" && formData.thumbnail) && (
+                        <img
+                            src={formData.thumbnail}
+                            alt="Preview Thumbnail"
+                            className="w-full h-full object-cover opacity-90"
+                        />
+                    )
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
@@ -60,10 +119,12 @@ const PreviewCard: React.FC<PreviewCardProps> = ({ formData, previewUrl, user })
                             {/* No avatar in preview, fallback only */}
                             <Avatar className="w-9 h-9">
                                 {author.avatar ? (
-                                    <img
+                                    <Image
                                         src={author.avatar}
                                         alt={author.name!}
                                         className="w-full h-full object-cover"
+                                        fill
+                                        sizes="36px"
                                     />
                                 ) : (
                                     <AvatarFallback>
@@ -107,7 +168,12 @@ const PreviewCard: React.FC<PreviewCardProps> = ({ formData, previewUrl, user })
                 {/* Article Content */}
                 {formData.content && (
                     <div className="prose prose-slate prose-lg max-w-none mb-8">
-                        <SanitizedContent className='text-slate-700 leading-relaxed' content={formData.content} />
+                        {compiled ?
+
+                            <SanitizedContent className='text-slate-700 leading-relaxed' content={formData.content} />
+                            :
+                            <div className="prose text-slate-400">Loading preview...</div>
+                        }
                     </div>
                 )}
 

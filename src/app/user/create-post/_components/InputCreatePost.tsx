@@ -50,6 +50,16 @@ export default function InputCreatePost({ session }: { session: Session | null }
     }));
   };
 
+  const handleContentChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      content: value
+    }));
+
+  }
+
+
+
   const handleTagInput = (e: ChangeEvent<HTMLInputElement>) => {
     setTagInput(e.target.value)
   }
@@ -203,7 +213,7 @@ export default function InputCreatePost({ session }: { session: Session | null }
 
   return (
     <div className="min-h-screen bg-white p-4 sm:p-6 lg:p-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="bg-white rounded-2xl shadow-lg border-2 border-cyan-100 overflow-hidden">
           <div className="bg-gradient-to-r from-cyan-500 to-cyan-600 px-6 py-8 sm:px-8">
             <h1 className="text-3xl font-bold text-white flex items-center gap-3">
@@ -219,7 +229,7 @@ export default function InputCreatePost({ session }: { session: Session | null }
 
             <ContentInput
               content={formData.content}
-              handleInputChange={handleInputChange} />
+              onChange={handleContentChange} />
 
             <TagInput
               tags={formData.tags}

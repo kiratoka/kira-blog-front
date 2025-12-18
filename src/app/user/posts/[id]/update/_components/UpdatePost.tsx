@@ -1,5 +1,10 @@
 "use client"
 
+import ContentInput from '@/app/user/create-post/_components/ContentInput';
+import PreviewCard from '@/app/user/create-post/_components/PreviewCard';
+import PublishToggle from '@/app/user/create-post/_components/PublishToggle';
+import TagInput from '@/app/user/create-post/_components/TagInput';
+import TitleInput from '@/app/user/create-post/_components/TitleInput';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 import { Session } from '@/lib/session'
@@ -18,7 +23,7 @@ interface FormDataLocal {
     content: string;
     thumbnail: File | null | string;
     isPublished: boolean;
-    tags?: Tag[]
+    tags: Tag[]
     path?: string
 }
 
@@ -26,6 +31,7 @@ interface FormDataLocal {
 const UpdatePost = ({ session, post }: { session: Session, post: Post }) => {
 
     const router = useRouter()
+    const user = session.user
 
     const [previewUrl, setPreviewURl] = useState("")
 
@@ -68,6 +74,17 @@ const UpdatePost = ({ session, post }: { session: Session, post: Post }) => {
             [name]: value
         }));
     };
+
+
+
+    const handleContentChange = (value: string) => {
+        setFormData(prev => ({
+            ...prev,
+            content: value
+        }));
+
+    }
+
 
     const handleTagInput = (e: ChangeEvent<HTMLInputElement>) => {
         setTagInput(e.target.value)
@@ -303,13 +320,13 @@ const UpdatePost = ({ session, post }: { session: Session, post: Post }) => {
 
     return (
         <div className="min-h-screen bg-white p-4 sm:p-6 lg:p-8">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-7xl mx-auto">
                 <div className="bg-white rounded-2xl shadow-lg border-2 border-cyan-100 overflow-hidden">
                     {/* Header */}
                     <div className="bg-gradient-to-r from-cyan-500 to-cyan-600 px-6 py-8 sm:px-8">
                         <h1 className="text-3xl font-bold text-white flex items-center gap-3">
                             <DocumentTextIcon className="w-8 h-8" />
-                            Create New Post
+                            Update Post
                         </h1>
                         <p className="text-cyan-50 mt-2">Share your thoughts with the world</p>
                     </div>
@@ -317,100 +334,23 @@ const UpdatePost = ({ session, post }: { session: Session, post: Post }) => {
                     {/* Form */}
                     <div className="p-6 sm:p-8 space-y-6">
                         {/* Title Input */}
-                        <div>
-                            <label htmlFor="title" className="block text-sm font-semibold text-gray-700 mb-2">
-                                Post Title
-                            </label>
-                            <input
-                                type="text"
-                                id="title"
-                                name="title"
-                                value={formData.title}
-                                onChange={handleInputChange}
-                                placeholder="Enter an engaging title..."
-                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition-all"
-                            />
-                        </div>
+                        <TitleInput
+                            title={formData.title}
+                            handleInputChange={handleInputChange} />
 
                         {/* Content Textarea */}
-                        <div>
-                            <label htmlFor="content" className="block text-sm font-semibold text-gray-700 mb-2">
-                                Content
-                            </label>
-                            <textarea
-                                id="content"
-                                name="content"
-                                value={formData.content}
-                                onChange={handleInputChange}
-                                rows={10}
-                                placeholder="Write your content here..."
-                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition-all resize-none"
-                            />
-                            <p className="text-sm text-gray-500 mt-2">
-                                {formData.content.length} characters
-                            </p>
-                        </div>
+                        <ContentInput
+                            content={formData.content}
+                            onChange={handleContentChange} />
 
                         {/* Tags Input */}
-                        <div>
-                            <label htmlFor="tags" className="block text-sm font-semibold text-gray-700 mb-2">
-                                <TagIcon className="w-4 h-4 inline mr-1" />
-                                Tags
-                            </label>
-                            <div className="space-y-3">
-                                {/* Input untuk menambah tag */}
-                                <div className="flex gap-2">
-                                    <input
-                                        type="text"
-                                        id="tags"
-                                        value={tagInput}
-                                        onChange={handleTagInput}
-                                        onKeyDown={(e) => {
-                                            if (e.key === "Enter") {
-                                                e.preventDefault(); // penting
-                                                handleAddTag();     // tambah tagnya
-                                            }
-                                        }}
-                                        name="tags"
-                                        placeholder="Add a tag and press Enter..."
-                                        className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition-all"
-                                    />
-                                    <button
-                                        type="button"
-                                        onClick={handleAddTag}
-                                        className="px-6 py-3 bg-cyan-500 text-white rounded-lg font-semibold hover:bg-cyan-600 transition-all"
-                                    >
-                                        Add
-                                    </button>
-                                </div>
 
-                                {/* Daftar Tags yang sudah ditambahkan */}
-                                <div className="flex flex-wrap gap-2">
-                                    {/* Contoh tag - nanti bisa di-map dari formData.tags */}
-
-                                    {formData.tags && formData.tags.map((tag) =>
-                                        <span key={tag.id} className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-50 text-cyan-700 rounded-full border-2 border-cyan-200 font-medium">
-                                            <TagIcon className="w-4 h-4" />
-                                            {tag.name}
-                                            <button
-                                                type="button"
-                                                onClick={() => handleDeleteTag(tag.id)}
-                                                className="hover:bg-cyan-200 rounded-full p-1 transition-colors"
-                                            >
-                                                <XMarkIcon className="w-4 h-4" />
-                                            </button>
-                                        </span>
-                                    )
-                                    }
-
-                                </div>
-
-                                {/* Info helper text */}
-                                <p className="text-sm text-gray-500">
-                                    Add tags to help people discover your post
-                                </p>
-                            </div>
-                        </div>
+                        <TagInput
+                            tags={formData.tags}
+                            handleAddTag={handleAddTag}
+                            handleDeleteTag={handleDeleteTag}
+                            tagInput={tagInput}
+                            handleTagInput={handleTagInput} />
 
                         {/* Thumbnail Upload */}
                         <div>
@@ -474,38 +414,11 @@ const UpdatePost = ({ session, post }: { session: Session, post: Post }) => {
                         </div>
 
                         {/* Publish Toggle */}
-                        <div className="bg-cyan-50 rounded-lg p-6 border-2 border-cyan-200">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-3">
-                                    {formData.isPublished ? (
-                                        <GlobeAltIcon className="w-6 h-6 text-cyan-600" />
-                                    ) : (
-                                        <EyeSlashIcon className="w-6 h-6 text-gray-500" />
-                                    )}
-                                    <div>
-                                        <h3 className="font-semibold text-gray-800">
-                                            {formData.isPublished ? 'Public Post' : 'Draft Post'}
-                                        </h3>
-                                        <p className="text-sm text-gray-600">
-                                            {formData.isPublished
-                                                ? 'This post will be visible to everyone'
-                                                : 'Save as draft, publish later'}
-                                        </p>
-                                    </div>
-                                </div>
-                                <button
-                                    type="button"
-                                    onClick={handlePublished}
-                                    className={`relative inline-flex h-8 w-16 items-center rounded-full transition-colors cursor-pointer ${formData.isPublished ? 'bg-cyan-600' : 'bg-gray-300'
-                                        }`}
-                                >
-                                    <span
-                                        className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${formData.isPublished ? 'translate-x-9' : 'translate-x-1'
-                                            }`}
-                                    />
-                                </button>
-                            </div>
-                        </div>
+                        <PublishToggle
+                            isPublished={formData.isPublished}
+                            handlePublished={handlePublished} />
+
+
 
                         {/* Action & Delete Buttons */}
                         <div className="flex flex-col sm:flex-row gap-3 pt-4">
@@ -559,45 +472,10 @@ const UpdatePost = ({ session, post }: { session: Session, post: Post }) => {
                 </div>
 
                 {/* Preview Card */}
-                {(formData.title || formData.content || formData.thumbnail || formData.tags) && (
-                    <div className="mt-8 bg-white rounded-2xl shadow-lg border-2 border-cyan-100 p-6 sm:p-8">
-                        <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                            <PhotoIcon className="w-6 h-6 text-cyan-600" />
-                            Preview
-                        </h2>
-                        <div className="space-y-4">
-                            {formData.title && (
-                                <h3 className="text-2xl font-bold text-gray-900">
-                                    {formData.title}
-                                </h3>
-                            )}
-                            {previewUrl && (
-                                <img
-                                    src={previewUrl}
-                                    alt="Preview"
-                                    className="w-full h-64 object-cover rounded-lg"
-                                />
-                            )}
-                            {formData.tags && formData.tags.map((tag) =>
-                                <span key={tag.id} className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-50 text-cyan-700 rounded-full border-2 border-cyan-200 font-medium">
-                                    <TagIcon className="w-4 h-4" />
-                                    {tag.name}
-                                    <h1>{tag.id}</h1>
-                                </span>
-
-                            )}
-
-                            {formData.content && (
-                                <p className="text-gray-700 whitespace-pre-wrap">
-                                    {formData.content}
-                                </p>
-                            )}
-                        </div>
-
-
-                        {/*  PREVIEW CARD END*/}
-                    </div>
-                )}
+                <PreviewCard
+                    formData={formData}
+                    previewUrl={previewUrl}
+                    user={user} />
 
             </div>
         </div>
