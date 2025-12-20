@@ -22,7 +22,7 @@ const PostPage = async ({ params }: Props) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-cyan-50/30 to-blue-50/30">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto md:px-4 py-8 max-w-4xl">
         {/* Header Section */}
         <article className="bg-white rounded-3xl shadow-xl overflow-hidden border border-cyan-100">
           {/* Hero Image */}
@@ -39,14 +39,14 @@ const PostPage = async ({ params }: Props) => {
           </div>
 
           {/* Content Section */}
-          <div className="p-8 lg:p-12">
+          <div className="md:p-8 lg:p-12">
             {/* Title */}
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-slate-800 leading-tight">
+            <h1 className="text-4xl max-md:px-4 py-8 lg:text-5xl font-bold mb-6 text-slate-800 leading-tight">
               {post.title}
             </h1>
 
             {/* Meta Information */}
-            <div className="flex flex-wrap items-center gap-4 mb-8 pb-6 border-b border-cyan-100">
+            <div className="flex flex-wrap items-center gap-4 mb-8 pb-6 border-b border-cyan-100 max-md:px-4">
               <div className="flex items-center gap-2 text-slate-600">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center overflow-hidden">
                   {post.author.avatar ? (
@@ -90,7 +90,7 @@ const PostPage = async ({ params }: Props) => {
             </div>
 
             {/* Interaction Bar */}
-            <div className="flex flex-wrap items-center gap-4 py-6 border-y border-cyan-100">
+            <div className="max-md:px-4 flex items-center gap-4 py-6 border-y border-cyan-100">
               <Like
                 postId={post.id}
                 user={session?.user}

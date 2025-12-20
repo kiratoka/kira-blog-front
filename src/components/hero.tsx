@@ -4,18 +4,17 @@ const Hero = () => {
         <div className="bg-gradient-to-br from-sky-500 to-indigo-500 text-white pt-12">
             <div className="container max-w-7xl justify-center mx-auto flex flex-col md:flex-row items-center flex-wrap px-3">
                 {/* Left col */}
-                <div className="flex flex-col w-full justify-center items-start md:w-2/5 text-center md:text-left">
-                    <p className="capitalize tracking-wide w-full">
+                <div className="flex flex-col w-full justify-center items-center md:items-start md:w-2/5 text-center md:text-left">
+                    <p className="max-md:hidden capitalize tracking-wide w-full">
                         Explore insights , tutorials, and stories for curious minds like
                         yours
                     </p>
-                    <h2 className="my-5 text-5xl font-bold leading-tight">
+                    <h2 className="my-5 text-center text-3xl md:text-5xl font-bold leading-tight">
                         Welcome To Kira Blog
                     </h2>
 
-                    <p className="capitalize leading-normal text-xl">
-                        Join a community that thrives on learning, creating and growing
-                        together.{" "}
+                    <p className="capitalize leading-normal md:text-xl">
+                        Discover, share, and inspire—your next great idea starts here.
                     </p>
                 </div>
 

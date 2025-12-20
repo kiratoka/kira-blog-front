@@ -1,4 +1,5 @@
 "use client";
+import { DEKSTOP_NAVBAR_HEIGHT } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { PropsWithChildren, useEffect, useState } from "react";
 
@@ -20,7 +21,7 @@ const DesktopNavbar = (props: Props) => {
   return (
     <nav
       className={cn(
-        "hidden bg-white text-gray-700 shadow-md transition-colors w-full z-50 top-0 md:flex justify-center items-center",
+        `h-[${DEKSTOP_NAVBAR_HEIGHT}] hidden bg-white text-gray-700 shadow-md transition-colors w-full z-50 top-0 md:flex justify-center items-center`,
         {
           " fixed ": isScrollDown,
         }
