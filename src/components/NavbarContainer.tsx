@@ -1,14 +1,17 @@
 import { PropsWithChildren } from "react";
 import DesktopNavbar from "./DekstopNavbar";
 import MobileNavbar from "./MobileNavbar";
+import { getSession } from "@/lib/session";
 
 
 type Props = PropsWithChildren;
-const NavbarContainer = (props: Props) => {
+const NavbarContainer = async () => {
+  const session = await getSession()
+
   return (
-    <div className="relative">
-      <DesktopNavbar>{props.children}</DesktopNavbar>
-      <MobileNavbar>{props.children}</MobileNavbar>
+    <div className="flex relative">
+      <DesktopNavbar session={session} />
+      <MobileNavbar session= {session}/>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { DEFAULT_PAGE_SIZE } from "@/lib/constants";
 import PostList from "./_components/PostList";
 import { fetchUserPosts } from "@/lib/actions/postActions";
 import NoPost from "./_components/NoPosts";
+import NavbarContainer from "@/components/NavbarContainer";
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -17,6 +18,7 @@ const Page = async ({ searchParams }: Props) => {
   });
   return (
     <div>
+      <NavbarContainer />
       {!posts || !posts.length ? (
         <NoPost />
       ) : (
@@ -26,7 +28,7 @@ const Page = async ({ searchParams }: Props) => {
           totalPages={Math.ceil(totalPosts / DEFAULT_PAGE_SIZE)}
         />
       )}
-    </div>        
+    </div>
   );
 };
 

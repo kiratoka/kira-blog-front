@@ -5,6 +5,7 @@ import Comments from "./_components/Comments";
 import { getSession } from "@/lib/session";
 import Like from "./_components/Like";
 import { Calendar, Share2 } from "lucide-react";
+import NavbarContainer from "@/components/NavbarContainer";
 
 
 
@@ -18,10 +19,11 @@ const PostPage = async ({ params }: Props) => {
   const post = await fetchPostById(+postId);
   const session = await getSession();
 
-  
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-cyan-50/30 to-blue-50/30">
+      <NavbarContainer />
       <div className="container mx-auto md:px-4 py-8 max-w-4xl">
         {/* Header Section */}
         <article className="bg-white rounded-3xl shadow-xl overflow-hidden border border-cyan-100">

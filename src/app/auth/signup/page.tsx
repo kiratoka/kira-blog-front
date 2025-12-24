@@ -3,7 +3,7 @@ import SignUpForm from "./_components/SignUpForm";
 
 const page = () => {
   return (
-    <div className="min-h-[100vh] w-full flex items-center justify-center bg-gradient-to-br from-white via-cyan-50 to-cyan-100 py-12 px-2">
+    <div className="h-screen w-full flex items-center justify-center bg-gradient-to-br from-white via-cyan-50 to-cyan-100 px-2">
       <div className="w-full max-w-md bg-white/90 rounded-3xl shadow-lg border border-cyan-100 flex flex-col gap-7 px-7 py-9 md:px-10 md:py-12 relative">
         {/* Decorative top cyan accent */}
         <div className="absolute -top-4 left-8 w-20 h-2 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full opacity-80" />

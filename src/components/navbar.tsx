@@ -1,13 +1,12 @@
-import { getSession, Session } from "@/lib/session";
+import { Session } from "@/lib/session";
 import Link from "next/link";
 import SignInPanel from "./SignInPanel";
 import Profile from "./Profile";
 
 
-const Navbar = async () => {
-  const session = await getSession();
+const Navbar = ({ session }: { session: Session | null }) => {
 
-  
+
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-cyan-100 shadow-lg shadow-cyan-500/5">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

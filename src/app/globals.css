@@ -132,3 +132,12 @@
   animation: l1 1s infinite;
 }
 @keyframes l1 {to{transform: rotate(.5turn)}}
+
+
+
+
+@media (min-width: 768px) {
+  .h-calc-navbar {
+    height: calc(100vh - 60px);
+  }
+}

@@ -1,4 +1,5 @@
 import Hero from "@/components/hero";
+import NavbarContainer from "@/components/NavbarContainer";
 import Posts from "@/components/Posts";
 import { fetchPosts } from "@/lib/actions/postActions";
 import { DEFAULT_PAGE_SIZE } from "@/lib/constants";
@@ -15,11 +16,12 @@ export default async function Home({ searchParams }: Props) {
   const { totalPosts, posts } = await fetchPosts(
     { page: page ? +page : undefined }
   )
-  
+
 
 
   return (
     <main>
+      <NavbarContainer />
       <Hero />
       <Posts posts={posts} currentPage={page ? +page : 1} totalPages={Math.ceil(totalPosts / DEFAULT_PAGE_SIZE)} />
     </main>

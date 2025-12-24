@@ -2,9 +2,10 @@
 import { fetchPostById } from "@/lib/actions/postActions"
 import UpdatePost from "./_components/UpdatePost"
 import { getSession } from "@/lib/session"
+import NavbarContainer from "@/components/NavbarContainer"
 
 type Props = {
-    params:Promise<{
+    params: Promise<{
         id: number
     }>
 }
@@ -19,9 +20,7 @@ const page = async (props: Props) => {
 
     return (
         <div>
-
-
-
+            <NavbarContainer />
             {String(session!.user.id) === String(post.author.id) ?
 
                 <UpdatePost session={session!} post={post} />
