@@ -24,7 +24,7 @@ const SideBar = (props: Props) => {
       <div
         ref={ref}
         className={cn(
-          "w-60 absolute top-0 z-50 duration-300  transition-all bg-white rounded-r-md min-h-screen",
+          "w-60 fixed top-0 z-50 duration-300  transition-all bg-white rounded-r-md min-h-screen",
           {
             "-left-full": !show,
             "left-0": show,

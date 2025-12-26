@@ -11,8 +11,8 @@ const MobileNavbar = ({ session }: { session: Session | null }) => {
   return (
     <div className='md:hidden'>
       <SideBar
-        triggerIcon={<Bars3Icon className='w-4' />}
-        triggerClassName='absolute top-2 left-2'
+        triggerIcon={<Bars3Icon className='w-4'/>}
+        triggerClassName='absolute top-2 left-2 z-50 fixed'
       >
         <Navbar session={session}/>
       </SideBar>

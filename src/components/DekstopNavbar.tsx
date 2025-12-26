@@ -1,9 +1,12 @@
 "use client";
+
+
 import { DEKSTOP_NAVBAR_HEIGHT } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { PropsWithChildren, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./navbar";
 import { Session } from "@/lib/session";
+import { usePathname } from "next/navigation";
 
 
 const DesktopNavbar = ({ session }: { session: Session | null }) => {
@@ -25,18 +28,27 @@ const DesktopNavbar = ({ session }: { session: Session | null }) => {
     };
   }, []); // tambahkan dependencies array untuk performa & keamanan
 
+
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  
   const isScrollDown = scrollPosition > 10;
   return (
     <nav
       className={cn(
-        `h-[${DEKSTOP_NAVBAR_HEIGHT}] hidden bg-white text-gray-700 shadow-md w-full z-50 top-0 md:flex justify-center items-center`,
-        isScrollDown && "fixed"
+        `h-[${DEKSTOP_NAVBAR_HEIGHT}] hidden bg-white text-gray-700 w-full z-50 top-0 md:flex justify-center items-center`,
+        isHomePage && !isScrollDown
+          ? "absolute bg-transparent"
+          : isScrollDown
+            ? "fixed"
+            : ""
       )}
     >
       <div className=" container mx-auto">
-        <Navbar session={session} />
+        <Navbar isScrollDown={isScrollDown} isHomePage={isHomePage} session={session} />
       </div>
-      <hr className="border-b border-gray-100 opacity-25 " />
+     
     </nav>
   );
 };

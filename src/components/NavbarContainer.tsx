@@ -4,12 +4,17 @@ import MobileNavbar from "./MobileNavbar";
 import { getSession } from "@/lib/session";
 
 
+
 type Props = PropsWithChildren;
 const NavbarContainer = async () => {
   const session = await getSession()
+ 
+  
 
+
+  
   return (
-    <div className="flex relative">
+    <div className="md:flex relative">
       <DesktopNavbar session={session} />
       <MobileNavbar session= {session}/>
     </div>

@@ -10,7 +10,7 @@ type Props = {
 };
 const Posts = (props: Props) => {
   return (
-    <section className="container m-8 max-w-5xl mx-auto">
+    <section id="blog-cards" className="container m-8 max-w-5xl mx-auto">
       <h2 className="text-2xl md:text-5xl font-bold text-center text-gray-600  leading-tight">
         Latest Posts
       </h2>
