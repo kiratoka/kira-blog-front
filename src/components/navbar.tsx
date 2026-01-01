@@ -93,7 +93,7 @@ const Navbar = ({
             {session && session.user ? (
               <Profile user={session.user} />
             ) : (
-              <SignInPanel />
+              <SignInPanel isHomePage={isHomePage} isScrollDown={isScrollDown}/>
             )}
           </div>
 
@@ -178,7 +178,7 @@ const MobileNav = ({
       {session && session.user ? (
         <Profile user={session.user} />
       ) : (
-        <SignInPanel />
+        <SignInPanel isHomePage={isHomePage} isScrollDown={isScrollDown}/>
       )}
     </div>
   </div>
